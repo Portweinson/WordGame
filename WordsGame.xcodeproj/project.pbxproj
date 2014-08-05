@@ -521,6 +521,7 @@
 				8436F195199177B9004F7241 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8436F196199177B9004F7241 /* Build configuration list for PBXNativeTarget "WordsGameTests" */ = {
 			isa = XCConfigurationList;
@@ -529,6 +530,7 @@
 				8436F198199177B9004F7241 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
