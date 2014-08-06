@@ -6,13 +6,13 @@
 //  Copyright (c) 2014 Portweinson. All rights reserved.
 //
 
-#import "PWGViewController.h"
+#import "PWGFirstScreenViewController.h"
 
-@interface PWGViewController ()
+@interface PWGFirstScreenViewController ()
 
 @end
 
-@implementation PWGViewController
+@implementation PWGFirstScreenViewController
 
 - (void)viewDidLoad
 {

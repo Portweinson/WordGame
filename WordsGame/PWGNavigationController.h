@@ -1,5 +1,5 @@
 //
-//  PWGViewController.h
+//  PWGNavigationController.h
 //  WordsGame
 //
 //  Created by Vjacheslav Embaturov on 06.08.14.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PWGViewController : UIViewController
+@interface PWGNavigationController : UINavigationController
 
 @end
