@@ -52,6 +52,7 @@
 		8436F22819919B62004F7241 /* MagicalRecord+ShorthandSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 8436F20919919B62004F7241 /* MagicalRecord+ShorthandSupport.m */; };
 		8436F22919919B62004F7241 /* MagicalRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 8436F20B19919B62004F7241 /* MagicalRecord.m */; };
 		8436F2321991AA37004F7241 /* PWGDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8436F2311991AA37004F7241 /* PWGDataManager.m */; };
+		8436F2351991AF05004F7241 /* PWGWordsDataImporter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8436F2341991AF05004F7241 /* PWGWordsDataImporter.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -150,6 +151,8 @@
 		8436F22E1991A3D3004F7241 /* PWGShortcuts.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWGShortcuts.h; sourceTree = "<group>"; };
 		8436F2301991AA37004F7241 /* PWGDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWGDataManager.h; sourceTree = "<group>"; };
 		8436F2311991AA37004F7241 /* PWGDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWGDataManager.m; sourceTree = "<group>"; };
+		8436F2331991AF05004F7241 /* PWGWordsDataImporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWGWordsDataImporter.h; sourceTree = "<group>"; };
+		8436F2341991AF05004F7241 /* PWGWordsDataImporter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWGWordsDataImporter.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -257,6 +260,8 @@
 		8436F19B199177F0004F7241 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				8436F2331991AF05004F7241 /* PWGWordsDataImporter.h */,
+				8436F2341991AF05004F7241 /* PWGWordsDataImporter.m */,
 				8436F2301991AA37004F7241 /* PWGDataManager.h */,
 				8436F2311991AA37004F7241 /* PWGDataManager.m */,
 				8436F19E19917826004F7241 /* CoreData */,
@@ -542,6 +547,7 @@
 				8436F21019919B62004F7241 /* MagicalImportFunctions.m in Sources */,
 				8436F21319919B62004F7241 /* NSNumber+MagicalDataImport.m in Sources */,
 				8436F21A19919B62004F7241 /* NSManagedObject+MagicalRecord.m in Sources */,
+				8436F2351991AF05004F7241 /* PWGWordsDataImporter.m in Sources */,
 				8436F22619919B62004F7241 /* MagicalRecord+Options.m in Sources */,
 				8436F22119919B62004F7241 /* NSPersistentStore+MagicalRecord.m in Sources */,
 				8436F22919919B62004F7241 /* MagicalRecord.m in Sources */,
