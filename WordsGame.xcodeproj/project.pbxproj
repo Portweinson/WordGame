@@ -51,6 +51,7 @@
 		8436F22719919B62004F7241 /* MagicalRecord+Setup.m in Sources */ = {isa = PBXBuildFile; fileRef = 8436F20719919B62004F7241 /* MagicalRecord+Setup.m */; };
 		8436F22819919B62004F7241 /* MagicalRecord+ShorthandSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 8436F20919919B62004F7241 /* MagicalRecord+ShorthandSupport.m */; };
 		8436F22919919B62004F7241 /* MagicalRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 8436F20B19919B62004F7241 /* MagicalRecord.m */; };
+		8436F2321991AA37004F7241 /* PWGDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8436F2311991AA37004F7241 /* PWGDataManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,12 +73,12 @@
 		8436F16E199177B9004F7241 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		8436F170199177B9004F7241 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8436F172199177B9004F7241 /* WordsGame-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WordsGame-Prefix.pch"; sourceTree = "<group>"; };
-		8436F173199177B9004F7241 /* PWGAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWGAppDelegate.h; sourceTree = "<group>"; };
-		8436F174199177B9004F7241 /* PWGAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWGAppDelegate.m; sourceTree = "<group>"; };
+		8436F173199177B9004F7241 /* PWGAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PWGAppDelegate.h; path = WordsGame/PWGAppDelegate.h; sourceTree = "<group>"; };
+		8436F174199177B9004F7241 /* PWGAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PWGAppDelegate.m; path = WordsGame/PWGAppDelegate.m; sourceTree = "<group>"; };
 		8436F177199177B9004F7241 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8436F179199177B9004F7241 /* PWGViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWGViewController.h; sourceTree = "<group>"; };
 		8436F17A199177B9004F7241 /* PWGViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWGViewController.m; sourceTree = "<group>"; };
-		8436F17C199177B9004F7241 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		8436F17C199177B9004F7241 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = WordsGame/Images.xcassets; sourceTree = "<group>"; };
 		8436F182199177B9004F7241 /* WordsGameTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WordsGameTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8436F183199177B9004F7241 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		8436F18B199177B9004F7241 /* WordsGameTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "WordsGameTests-Info.plist"; sourceTree = "<group>"; };
@@ -145,6 +146,10 @@
 		8436F20D19919B62004F7241 /* MagicalRecordLogging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MagicalRecordLogging.h; sourceTree = "<group>"; };
 		8436F20E19919B62004F7241 /* MagicalRecordShorthand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MagicalRecordShorthand.h; sourceTree = "<group>"; };
 		8436F20F19919B62004F7241 /* CoreData+MagicalRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CoreData+MagicalRecord.h"; sourceTree = "<group>"; };
+		8436F22C1991A145004F7241 /* PWGUserDefaultKeys.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWGUserDefaultKeys.h; sourceTree = "<group>"; };
+		8436F22E1991A3D3004F7241 /* PWGShortcuts.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWGShortcuts.h; sourceTree = "<group>"; };
+		8436F2301991AA37004F7241 /* PWGDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWGDataManager.h; sourceTree = "<group>"; };
+		8436F2311991AA37004F7241 /* PWGDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWGDataManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,6 +181,9 @@
 			isa = PBXGroup;
 			children = (
 				8436F16A199177B9004F7241 /* WordsGame */,
+				8436F173199177B9004F7241 /* PWGAppDelegate.h */,
+				8436F174199177B9004F7241 /* PWGAppDelegate.m */,
+				8436F17C199177B9004F7241 /* Images.xcassets */,
 				8436F1D119919AFD004F7241 /* 3rdParty */,
 				8436F189199177B9004F7241 /* WordsGameTests */,
 				8436F163199177B9004F7241 /* Frameworks */,
@@ -207,12 +215,10 @@
 		8436F16A199177B9004F7241 /* WordsGame */ = {
 			isa = PBXGroup;
 			children = (
+				8436F22B1991A0CA004F7241 /* Helper Headers */,
 				8436F19B199177F0004F7241 /* Model */,
 				8436F19D19917800004F7241 /* Controller */,
 				8436F19C199177F9004F7241 /* View */,
-				8436F173199177B9004F7241 /* PWGAppDelegate.h */,
-				8436F174199177B9004F7241 /* PWGAppDelegate.m */,
-				8436F17C199177B9004F7241 /* Images.xcassets */,
 				8436F16B199177B9004F7241 /* Supporting Files */,
 			);
 			path = WordsGame;
@@ -251,6 +257,8 @@
 		8436F19B199177F0004F7241 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				8436F2301991AA37004F7241 /* PWGDataManager.h */,
+				8436F2311991AA37004F7241 /* PWGDataManager.m */,
 				8436F19E19917826004F7241 /* CoreData */,
 			);
 			name = Model;
@@ -405,6 +413,15 @@
 			path = Core;
 			sourceTree = "<group>";
 		};
+		8436F22B1991A0CA004F7241 /* Helper Headers */ = {
+			isa = PBXGroup;
+			children = (
+				8436F22E1991A3D3004F7241 /* PWGShortcuts.h */,
+				8436F22C1991A145004F7241 /* PWGUserDefaultKeys.h */,
+			);
+			name = "Helper Headers";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -508,6 +525,7 @@
 				8436F21219919B62004F7241 /* NSEntityDescription+MagicalDataImport.m in Sources */,
 				8436F21E19919B62004F7241 /* NSManagedObjectContext+MagicalSaves.m in Sources */,
 				8436F21D19919B62004F7241 /* NSManagedObjectContext+MagicalRecord.m in Sources */,
+				8436F2321991AA37004F7241 /* PWGDataManager.m in Sources */,
 				8436F22519919B62004F7241 /* MagicalRecord+iCloud.m in Sources */,
 				8436F22319919B62004F7241 /* MagicalRecord+Actions.m in Sources */,
 				8436F21819919B62004F7241 /* NSManagedObject+MagicalDataImport.m in Sources */,

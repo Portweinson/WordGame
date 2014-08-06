@@ -15,4 +15,12 @@
     #import <Foundation/Foundation.h>
     #import "CoreData+MagicalRecord.h"
     #import "MagicalRecord.h"
+
+//
+    #import "PWGDataManager.h"
+
+//Helper headers
+    #import "PWGUserDefaultKeys.h"
+    #import "PWGShortcuts.h"
+
 #endif

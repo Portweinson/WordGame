@@ -10,6 +10,9 @@
 
 @implementation PWGAppDelegate
 
+
+#pragma mark - Standard AppDelegate methods
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
@@ -45,6 +48,15 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     
     [MagicalRecord cleanUp];
+    
+    if (DATA_MANAGER.isFirstAppLaunch) {
+        [USER_DEFAULTS setBool:YES forKey:kUDKeyIsNotFirstAppLaunch];
+    }
+    [USER_DEFAULTS synchronize];
 }
+
+
+#pragma mark - Additional methods
+
 
 @end
