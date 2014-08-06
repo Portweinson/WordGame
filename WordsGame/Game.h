@@ -13,8 +13,11 @@
 
 @interface Game : NSManagedObject
 
-@property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSString * language;
+@property (nonatomic, retain) NSString * name;
+@property (nonatomic, retain) NSDate * startDate;
+@property (nonatomic, retain) NSDate * finishDate;
+@property (nonatomic, retain) NSNumber * duration;
 @property (nonatomic, retain) NSOrderedSet *usedWords;
 @end
 

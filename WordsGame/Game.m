@@ -12,8 +12,11 @@
 
 @implementation Game
 
-@dynamic name;
 @dynamic language;
+@dynamic name;
+@dynamic startDate;
+@dynamic finishDate;
+@dynamic duration;
 @dynamic usedWords;
 
 @end

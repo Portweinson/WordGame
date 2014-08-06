@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3401" systemVersion="12F45" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Game" representedClassName="Game" syncable="YES">
+        <attribute name="duration" optional="YES" attributeType="Double" minValueString="0" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="finishDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="language" optional="YES" attributeType="String" minValueString="2" maxValueString="3" defaultValueString="ru" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" minValueString="1" maxValueString="20" defaultValueString="New" syncable="YES"/>
+        <attribute name="startDate" optional="YES" attributeType="Date" indexed="YES" syncable="YES"/>
         <relationship name="usedWords" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Word" inverseName="games" inverseEntity="Word" syncable="YES"/>
     </entity>
     <entity name="Word" representedClassName="Word" syncable="YES">
@@ -15,7 +18,7 @@
         <relationship name="games" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Game" inverseName="usedWords" inverseEntity="Game" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Game" positionX="288" positionY="-76" width="128" height="88"/>
+        <element name="Game" positionX="288" positionY="-76" width="128" height="133"/>
         <element name="Word" positionX="484" positionY="-153" width="128" height="148"/>
     </elements>
 </model>
