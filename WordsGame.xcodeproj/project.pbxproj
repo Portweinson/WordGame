@@ -54,6 +54,7 @@
 		8436F22919919B62004F7241 /* MagicalRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 8436F20B19919B62004F7241 /* MagicalRecord.m */; };
 		8436F2321991AA37004F7241 /* PWGDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8436F2311991AA37004F7241 /* PWGDataManager.m */; };
 		8436F2351991AF05004F7241 /* PWGWordsDataImporter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8436F2341991AF05004F7241 /* PWGWordsDataImporter.m */; };
+		84633BB119922FF9002D9F52 /* ruWords.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84633BB019922FF9002D9F52 /* ruWords.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -155,6 +156,7 @@
 		8436F2311991AA37004F7241 /* PWGDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWGDataManager.m; sourceTree = "<group>"; };
 		8436F2331991AF05004F7241 /* PWGWordsDataImporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWGWordsDataImporter.h; sourceTree = "<group>"; };
 		8436F2341991AF05004F7241 /* PWGWordsDataImporter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWGWordsDataImporter.m; sourceTree = "<group>"; };
+		84633BB019922FF9002D9F52 /* ruWords.plist */ = {isa = PBXFileReference; explicitFileType = file.bplist; fileEncoding = 4; path = ruWords.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -303,6 +305,7 @@
 		8436F19F19917846004F7241 /* Resourses */ = {
 			isa = PBXGroup;
 			children = (
+				84633BAD19922F7D002D9F52 /* Words PLists */,
 				840355F21991BABB00947529 /* Localizable.strings */,
 			);
 			name = Resourses;
@@ -430,6 +433,14 @@
 			name = "Helper Headers";
 			sourceTree = "<group>";
 		};
+		84633BAD19922F7D002D9F52 /* Words PLists */ = {
+			isa = PBXGroup;
+			children = (
+				84633BB019922FF9002D9F52 /* ruWords.plist */,
+			);
+			name = "Words PLists";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -507,6 +518,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84633BB119922FF9002D9F52 /* ruWords.plist in Resources */,
 				8436F17D199177B9004F7241 /* Images.xcassets in Resources */,
 				840355F31991BABB00947529 /* Localizable.strings in Resources */,
 				8436F16F199177B9004F7241 /* InfoPlist.strings in Resources */,
