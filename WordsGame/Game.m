@@ -13,6 +13,7 @@
 @implementation Game
 
 @dynamic name;
+@dynamic language;
 @dynamic usedWords;
 
 @end

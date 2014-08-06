@@ -14,8 +14,10 @@
 @interface Word : NSManagedObject
 
 @property (nonatomic, retain) NSString * firstLetter;
-@property (nonatomic, retain) NSString * word;
 @property (nonatomic, retain) NSString * lastLetter;
+@property (nonatomic, retain) NSString * word;
+@property (nonatomic, retain) NSNumber * addedByUser;
+@property (nonatomic, retain) NSString * language;
 @property (nonatomic, retain) NSSet *games;
 @end
 

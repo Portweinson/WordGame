@@ -13,8 +13,10 @@
 @implementation Word
 
 @dynamic firstLetter;
-@dynamic word;
 @dynamic lastLetter;
+@dynamic word;
+@dynamic addedByUser;
+@dynamic language;
 @dynamic games;
 
 @end

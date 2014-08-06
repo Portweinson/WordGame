@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		840355F31991BABB00947529 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 840355F21991BABB00947529 /* Localizable.strings */; };
+		84035600199213C000947529 /* Word.m in Sources */ = {isa = PBXBuildFile; fileRef = 840355FF199213C000947529 /* Word.m */; };
+		84035603199213C000947529 /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = 84035602199213C000947529 /* Game.m */; };
 		8436F165199177B9004F7241 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8436F164199177B9004F7241 /* Foundation.framework */; };
 		8436F167199177B9004F7241 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8436F166199177B9004F7241 /* CoreGraphics.framework */; };
 		8436F169199177B9004F7241 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8436F168199177B9004F7241 /* UIKit.framework */; };
@@ -24,8 +26,6 @@
 		8436F190199177B9004F7241 /* WordsGameTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8436F18F199177B9004F7241 /* WordsGameTests.m */; };
 		8436F19A199177D9004F7241 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8436F199199177D9004F7241 /* CoreData.framework */; };
 		8436F1A2199178B5004F7241 /* WordsGame.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8436F1A0199178B5004F7241 /* WordsGame.xcdatamodeld */; };
-		8436F1AB19917EC7004F7241 /* Word.m in Sources */ = {isa = PBXBuildFile; fileRef = 8436F1AA19917EC7004F7241 /* Word.m */; };
-		8436F1AE19917EC7004F7241 /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = 8436F1AD19917EC7004F7241 /* Game.m */; };
 		8436F21019919B62004F7241 /* MagicalImportFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8436F1D619919B61004F7241 /* MagicalImportFunctions.m */; };
 		8436F21119919B62004F7241 /* NSAttributeDescription+MagicalDataImport.m in Sources */ = {isa = PBXBuildFile; fileRef = 8436F1D819919B61004F7241 /* NSAttributeDescription+MagicalDataImport.m */; };
 		8436F21219919B62004F7241 /* NSEntityDescription+MagicalDataImport.m in Sources */ = {isa = PBXBuildFile; fileRef = 8436F1DA19919B61004F7241 /* NSEntityDescription+MagicalDataImport.m */; };
@@ -68,6 +68,10 @@
 
 /* Begin PBXFileReference section */
 		840355F21991BABB00947529 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		840355FE199213C000947529 /* Word.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Word.h; sourceTree = "<group>"; };
+		840355FF199213C000947529 /* Word.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Word.m; sourceTree = "<group>"; };
+		84035601199213C000947529 /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Game.h; sourceTree = "<group>"; };
+		84035602199213C000947529 /* Game.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Game.m; sourceTree = "<group>"; };
 		8436F161199177B9004F7241 /* WordsGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WordsGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8436F164199177B9004F7241 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		8436F166199177B9004F7241 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -89,10 +93,6 @@
 		8436F18F199177B9004F7241 /* WordsGameTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WordsGameTests.m; sourceTree = "<group>"; };
 		8436F199199177D9004F7241 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		8436F1A1199178B5004F7241 /* WordsGame.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WordsGame.xcdatamodel; sourceTree = "<group>"; };
-		8436F1A919917EC7004F7241 /* Word.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Word.h; sourceTree = "<group>"; };
-		8436F1AA19917EC7004F7241 /* Word.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Word.m; sourceTree = "<group>"; };
-		8436F1AC19917EC7004F7241 /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Game.h; sourceTree = "<group>"; };
-		8436F1AD19917EC7004F7241 /* Game.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Game.m; sourceTree = "<group>"; };
 		8436F1D519919B61004F7241 /* MagicalImportFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MagicalImportFunctions.h; sourceTree = "<group>"; };
 		8436F1D619919B61004F7241 /* MagicalImportFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MagicalImportFunctions.m; sourceTree = "<group>"; };
 		8436F1D719919B61004F7241 /* NSAttributeDescription+MagicalDataImport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAttributeDescription+MagicalDataImport.h"; sourceTree = "<group>"; };
@@ -291,11 +291,11 @@
 		8436F19E19917826004F7241 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				840355FE199213C000947529 /* Word.h */,
+				840355FF199213C000947529 /* Word.m */,
+				84035601199213C000947529 /* Game.h */,
+				84035602199213C000947529 /* Game.m */,
 				8436F1A0199178B5004F7241 /* WordsGame.xcdatamodeld */,
-				8436F1A919917EC7004F7241 /* Word.h */,
-				8436F1AA19917EC7004F7241 /* Word.m */,
-				8436F1AC19917EC7004F7241 /* Game.h */,
-				8436F1AD19917EC7004F7241 /* Game.m */,
 			);
 			name = CoreData;
 			sourceTree = "<group>";
@@ -542,10 +542,11 @@
 				8436F22819919B62004F7241 /* MagicalRecord+ShorthandSupport.m in Sources */,
 				8436F22719919B62004F7241 /* MagicalRecord+Setup.m in Sources */,
 				8436F171199177B9004F7241 /* main.m in Sources */,
+				84035600199213C000947529 /* Word.m in Sources */,
 				8436F175199177B9004F7241 /* PWGAppDelegate.m in Sources */,
 				8436F21F19919B62004F7241 /* NSManagedObjectContext+MagicalThreading.m in Sources */,
-				8436F1AE19917EC7004F7241 /* Game.m in Sources */,
 				8436F21919919B62004F7241 /* NSManagedObject+MagicalFinders.m in Sources */,
+				84035603199213C000947529 /* Game.m in Sources */,
 				8436F22019919B62004F7241 /* NSManagedObjectModel+MagicalRecord.m in Sources */,
 				8436F21119919B62004F7241 /* NSAttributeDescription+MagicalDataImport.m in Sources */,
 				8436F21019919B62004F7241 /* MagicalImportFunctions.m in Sources */,
@@ -560,7 +561,6 @@
 				8436F21519919B62004F7241 /* NSRelationshipDescription+MagicalDataImport.m in Sources */,
 				8436F21419919B62004F7241 /* NSObject+MagicalDataImport.m in Sources */,
 				8436F21B19919B62004F7241 /* NSManagedObject+MagicalRequests.m in Sources */,
-				8436F1AB19917EC7004F7241 /* Word.m in Sources */,
 				8436F21C19919B62004F7241 /* NSManagedObjectContext+MagicalObserving.m in Sources */,
 				8436F22419919B62004F7241 /* MagicalRecord+ErrorHandling.m in Sources */,
 			);
