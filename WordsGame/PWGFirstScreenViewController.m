@@ -8,11 +8,22 @@
 
 #import "PWGFirstScreenViewController.h"
 
+static NSString *const kSegueIDFirstToGameSetup = @"First Screen to Game Setup";
+
+
 @interface PWGFirstScreenViewController ()
+
+@property (weak, nonatomic) IBOutlet UIButton *buttonNewGame;
+@property (weak, nonatomic) IBOutlet UIButton *buttonContinueGame;
+@property (weak, nonatomic) IBOutlet UIButton *buttonFinishedGames;
+
 
 @end
 
 @implementation PWGFirstScreenViewController
+
+
+#pragma mark - View lifecycle
 
 - (void)viewDidLoad
 {
@@ -24,6 +35,34 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+
+#pragma mark - Actions
+
+- (IBAction)newGameButtonPressed:(UIButton *)sender
+{
+    [self performSegueWithIdentifier:kSegueIDFirstToGameSetup sender:self];
+}
+
+- (IBAction)continueButtonPressed:(UIButton *)sender
+{
+    
+}
+
+- (IBAction)finishedGamesButtonPressed:(UIButton *)sender
+{
+    
+}
+
+
+#pragma mark - Navigation
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:kSegueIDFirstToGameSetup]) {
+        
+    }
 }
 
 @end
