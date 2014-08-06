@@ -8,10 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
-@interface PWGGameAlphabets : NSObject
+@interface PWGAlphabets : NSObject
 
 #pragma mark - Class methods
 
 + (NSArray *)alphabetForLanguageWithCode:(NSString *)languageCode;
++ (NSString *)lastLetterForWord:(NSString *)word withLanguageCode:(NSString *)languageCode;
 
 @end

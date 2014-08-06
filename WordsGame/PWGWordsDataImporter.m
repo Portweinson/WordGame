@@ -7,6 +7,7 @@
 //
 
 #import "PWGWordsDataImporter.h"
+#import "PWGAlphabets.h"
 #import "Word.h"
 
 static NSString *const kPlistNameSuffix = @"Words";
@@ -32,12 +33,13 @@ static NSString *const kPlistKeyMeaning = @"meaning";
                         for (NSDictionary *wordInfo in words) {
                             NSString *word = [wordInfo objectForKey:kPlistKeyWord];
                             NSString *meaning = [wordInfo objectForKey:kPlistKeyMeaning];
+                            
                             Word *wordEntity = [Word MR_createEntityInContext:localContext];
+                            wordEntity.language = languageCode;
                             wordEntity.word = word;
                             wordEntity.meaning = meaning;
                             wordEntity.firstLetter = [word substringToIndex:1];
-                            wordEntity.lastLetter = [word substringFromIndex:[word length] - 1];
-                            wordEntity.language = languageCode;
+                            wordEntity.lastLetter = [PWGAlphabets lastLetterForWord:word withLanguageCode:languageCode];
                         }
                     }
                 }
