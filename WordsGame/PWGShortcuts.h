@@ -13,5 +13,6 @@
 #define USER_DEFAULTS [NSUserDefaults standardUserDefaults]
 
 #define DATA_MANAGER [PWGDataManager sharedInstance]
+#define GAMES_MANAGER [PWGDataManager sharedInstance].gamesManager
 
 #endif

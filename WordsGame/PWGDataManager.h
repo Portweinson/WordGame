@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@class PWGWordsDataImporter;
+@class PWGWordsDataImporter, PWGGamesManager;
 
 
 @interface PWGDataManager : NSObject
@@ -17,6 +17,7 @@
 
 @property (nonatomic) BOOL isFirstAppLaunch;
 @property (nonatomic, strong) PWGWordsDataImporter *wordsDataImporter;
+@property (nonatomic, strong) PWGGamesManager *gamesManager;
 
 
 #pragma mark - Class methods
