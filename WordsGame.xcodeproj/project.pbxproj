@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		840355F31991BABB00947529 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 840355F21991BABB00947529 /* Localizable.strings */; };
 		8436F165199177B9004F7241 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8436F164199177B9004F7241 /* Foundation.framework */; };
 		8436F167199177B9004F7241 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8436F166199177B9004F7241 /* CoreGraphics.framework */; };
 		8436F169199177B9004F7241 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8436F168199177B9004F7241 /* UIKit.framework */; };
@@ -66,6 +67,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		840355F21991BABB00947529 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		8436F161199177B9004F7241 /* WordsGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WordsGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8436F164199177B9004F7241 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		8436F166199177B9004F7241 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -301,6 +303,7 @@
 		8436F19F19917846004F7241 /* Resourses */ = {
 			isa = PBXGroup;
 			children = (
+				840355F21991BABB00947529 /* Localizable.strings */,
 			);
 			name = Resourses;
 			sourceTree = "<group>";
@@ -505,6 +508,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8436F17D199177B9004F7241 /* Images.xcassets in Resources */,
+				840355F31991BABB00947529 /* Localizable.strings in Resources */,
 				8436F16F199177B9004F7241 /* InfoPlist.strings in Resources */,
 				8436F178199177B9004F7241 /* Main.storyboard in Resources */,
 			);
