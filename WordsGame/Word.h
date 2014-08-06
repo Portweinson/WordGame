@@ -18,6 +18,7 @@
 @property (nonatomic, retain) NSString * word;
 @property (nonatomic, retain) NSNumber * addedByUser;
 @property (nonatomic, retain) NSString * language;
+@property (nonatomic, retain) NSString * meaning;
 @property (nonatomic, retain) NSSet *games;
 @end
 

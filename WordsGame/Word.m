@@ -17,6 +17,7 @@
 @dynamic word;
 @dynamic addedByUser;
 @dynamic language;
+@dynamic meaning;
 @dynamic games;
 
 @end

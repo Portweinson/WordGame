@@ -10,11 +10,12 @@
         <attribute name="firstLetter" optional="YES" attributeType="String" minValueString="0" maxValueString="1" indexed="YES" syncable="YES"/>
         <attribute name="language" optional="YES" attributeType="String" minValueString="2" maxValueString="3" indexed="YES" syncable="YES"/>
         <attribute name="lastLetter" optional="YES" attributeType="String" minValueString="0" maxValueString="1" indexed="YES" syncable="YES"/>
+        <attribute name="meaning" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="word" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="games" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Game" inverseName="usedWords" inverseEntity="Game" syncable="YES"/>
     </entity>
     <elements>
         <element name="Game" positionX="288" positionY="-76" width="128" height="88"/>
-        <element name="Word" positionX="484" positionY="-153" width="128" height="133"/>
+        <element name="Word" positionX="484" positionY="-153" width="128" height="148"/>
     </elements>
 </model>
