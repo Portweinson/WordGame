@@ -6,7 +6,7 @@
         <relationship name="usedWords" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Word" inverseName="games" inverseEntity="Word" syncable="YES"/>
     </entity>
     <entity name="Word" representedClassName="Word" syncable="YES">
-        <attribute name="addedByUser" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="addedByUser" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="firstLetter" optional="YES" attributeType="String" minValueString="0" maxValueString="1" indexed="YES" syncable="YES"/>
         <attribute name="language" optional="YES" attributeType="String" minValueString="2" maxValueString="3" indexed="YES" syncable="YES"/>
         <attribute name="lastLetter" optional="YES" attributeType="String" minValueString="0" maxValueString="1" indexed="YES" syncable="YES"/>

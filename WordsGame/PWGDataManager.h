@@ -8,12 +8,15 @@
 
 #import <Foundation/Foundation.h>
 
-@interface PWGDataManager : NSObject
+@class PWGWordsDataImporter;
 
+
+@interface PWGDataManager : NSObject
 
 #pragma mark - Properties
 
 @property (nonatomic) BOOL isFirstAppLaunch;
+@property (nonatomic, strong) PWGWordsDataImporter *wordsDataImporter;
 
 
 #pragma mark - Class methods
@@ -23,5 +26,6 @@
 
 #pragma mark - Instance methods
 
+- (void)start;
 
 @end

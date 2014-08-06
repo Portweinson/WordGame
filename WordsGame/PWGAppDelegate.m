@@ -18,6 +18,7 @@
     // Override point for customization after application launch.
     
     [MagicalRecord setupAutoMigratingCoreDataStack];
+    [DATA_MANAGER start];
     return YES;
 }
 							

@@ -10,4 +10,6 @@
 
 @interface PWGWordsDataImporter : NSObject
 
+- (void)importWordsFromLocalResourses;
+
 @end

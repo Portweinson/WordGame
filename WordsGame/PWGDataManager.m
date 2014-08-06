@@ -7,6 +7,7 @@
 //
 
 #import "PWGDataManager.h"
+#import "PWGWordsDataImporter.h"
 
 @implementation PWGDataManager
 
@@ -27,9 +28,16 @@ static PWGDataManager *sharedInstance = nil;
 {
 	self = [super init];
 	if (self) {
-        
+        self.wordsDataImporter = [PWGWordsDataImporter new];
 	}
 	return self;
+}
+
+- (void)start
+{
+    if (self.isFirstAppLaunch) {
+        [self.wordsDataImporter importWordsFromLocalResourses];
+    }
 }
 
 
