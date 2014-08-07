@@ -7,6 +7,8 @@
 //
 
 #import "PWGEditDictViewController.h"
+#import "PWGWordsManager.h"
+#import "Word.h"
 
 static NSString *const kCellIDStandardWord = @"standardWordCell";
 static NSString *const kCellIDUserWord = @"userWordCell";
@@ -16,6 +18,9 @@ static NSString *const kCellIDUserWord = @"userWordCell";
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
+@property (strong, nonatomic) NSDictionary *words;
+@property (strong, nonatomic) NSArray *letters;
+
 @end
 
 
@@ -24,19 +29,15 @@ static NSString *const kCellIDUserWord = @"userWordCell";
 
 #pragma mark - View Lifecycle
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
+    /////TEMP/////
+    self.words = [WORDS_MANAGER wordsSectionedByFirstLetterForLanguage:kLanguageRussian];
+    self.letters = [self.words allKeys];
+    //////////////
 }
 
 - (void)didReceiveMemoryWarning
@@ -52,21 +53,33 @@ static NSString *const kCellIDUserWord = @"userWordCell";
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    NSUInteger sectionsCount = 0;
-    
-    return sectionsCount;
+    return [self.letters count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSInteger rowsCount = 2;
-    
-    return rowsCount;
+    NSString *sectionLetter = [self.letters objectAtIndex:section];
+    NSArray *sectionAnimals = [self.words objectForKey:sectionLetter];
+    return [sectionAnimals count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:kCellIDStandardWord];
+    UITableViewCell *cell;
+    
+    NSString *sectionLetter = [self.letters objectAtIndex:indexPath.section];
+    NSArray *sectionWords = [self.words objectForKey:sectionLetter];
+    Word *word = [sectionWords objectAtIndex:indexPath.row];
+    
+    if ([word.addedByUser boolValue] == YES) {
+        cell = [self.tableView dequeueReusableCellWithIdentifier:kCellIDUserWord];
+    } else {
+        cell = [self.tableView dequeueReusableCellWithIdentifier:kCellIDStandardWord];
+    }
+    cell.textLabel.text = word.word;
+    
+    NSUInteger useCount = [word.useCount integerValue];
+    cell.detailTextLabel.text = (useCount > 0) ? [NSString stringWithFormat:@"%li", [word.useCount integerValue]] : @"";
     
     return cell;
 }
@@ -81,19 +94,9 @@ static NSString *const kCellIDUserWord = @"userWordCell";
     
 }
 
-
-- (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    UIView *headerView = [[UIView alloc] initWithFrame:CGRectZero];
-    
-    return headerView;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-    CGFloat height = 0;
-    
-    return height;
+    return [self.letters objectAtIndex:section];
 }
 
 
