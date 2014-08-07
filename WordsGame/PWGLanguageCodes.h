@@ -12,4 +12,6 @@
 static NSString *const kLanguageRussian = @"ru";
 static NSString *const kLanguageEnglish = @"en";
 
+#define LANGUAGE_CODES @[kLanguageEnglish, kLanguageRussian]
+
 #endif

@@ -22,7 +22,7 @@ static NSString *const kPlistKeyMeaning = @"meaning";
 
 - (void)importWordsFromLocalResourses
 {
-    for (NSString *languageCode in [NSLocale ISOLanguageCodes]) {
+    for (NSString *languageCode in LANGUAGE_CODES) {
         NSDictionary *plistData = [NSDictionary dictionaryWithContentsOfFile:[self plistPathForLanguage:languageCode]];
         if ([plistData count]) {
             NSArray *keys = [plistData allKeys];

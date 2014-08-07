@@ -22,5 +22,6 @@
 //Helper headers
     #import "PWGUserDefaultKeys.h"
     #import "PWGShortcuts.h"
+    #import "PWGLanguageCodes.h"
 
 #endif
