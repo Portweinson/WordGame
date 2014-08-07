@@ -14,4 +14,7 @@
 
 - (NSUInteger)wordsCountForLanguageCode:(NSString *)languageCode;
 
+- (NSDictionary *)wordsSectionedByFirstLetterForLanguage:(NSString *)languageCode;
+- (NSDictionary *)wordsSectionedByFirstLetterForLanguage:(NSString *)languageCode addedByUser:(BOOL)addedByUser;
+
 @end
