@@ -8,17 +8,17 @@
 
 #import "PWGGameSetupViewController.h"
 #import "PWGWordsManager.h"
-#import "PWGLanguageManager.h"
 #import "Game+Extended.h"
+#import "PWGLanguagePickerView.h"
 
 static NSString *const kSegueIDGameSetupToGame = @"Game setup to Game";
 
 
-@interface PWGGameSetupViewController () <UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate, UIGestureRecognizerDelegate>
+@interface PWGGameSetupViewController () <UITextFieldDelegate, UIGestureRecognizerDelegate, PWGLanguagePickerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *barButtonDone;
 @property (weak, nonatomic) IBOutlet UITextField *textFieldGameName;
-@property (weak, nonatomic) IBOutlet UIPickerView *pickerGameLanguage;
+@property (weak, nonatomic) IBOutlet PWGLanguagePickerView *pickerGameLanguage;
 @property (weak, nonatomic) IBOutlet UILabel *labelWordsCount;
 
 @property (nonatomic, strong) UITapGestureRecognizer *hideKeyboardTapRecognizer;
@@ -50,7 +50,8 @@ static NSString *const kSegueIDGameSetupToGame = @"Game setup to Game";
 {
     [super viewWillAppear:animated];
     
-    [self selectDefaultPickerRow];
+    self.pickerGameLanguage.pickerDelegate = self;
+    [self.pickerGameLanguage selectDefaultLanguageRow:NO];
     [self refreshWordsCountLabelText];
 }
 
@@ -93,7 +94,7 @@ static NSString *const kSegueIDGameSetupToGame = @"Game setup to Game";
 
 - (void)refreshWordsCountLabelText
 {
-    NSUInteger count = [WORDS_MANAGER wordsCountForLanguageCode:[self languageCodeForSelectedPickerRow]];
+    NSUInteger count = [WORDS_MANAGER wordsCountForLanguageCode:[self.pickerGameLanguage languageCodeForSelectedPickerRow]];
     NSString *labelText = [NSString stringWithFormat:NSLocalizedString(@"GSVC LABEL Words count", nil), count];
     self.labelWordsCount.text = labelText;
 }
@@ -117,38 +118,10 @@ static NSString *const kSegueIDGameSetupToGame = @"Game setup to Game";
     self.hideKeyboardTapRecognizer = nil;
 }
 
-#pragma mark - UIPickerView methods
 
-- (void)selectDefaultPickerRow
-{
-    NSString *language = [LANGUAGE_MANAGER defaultLanguageCode];
-    NSUInteger index = [LANGUAGE_CODES indexOfObject:language];
-    [self.pickerGameLanguage selectRow:index inComponent:0 animated:NO];
-}
+#pragma mark - PWGLanguagePickerDelegate
 
-- (NSString *)languageCodeForSelectedPickerRow
-{
-    return [LANGUAGE_CODES objectAtIndex:[self.pickerGameLanguage selectedRowInComponent:0]];
-}
-
-#pragma mark - UIPickerViewDelegate/UIPickerViewDataSource
-
-- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
-{
-    return 1;
-}
-
-- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
-{
-    return [LANGUAGE_CODES count];
-}
-
-- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
-{
-    return [LANGUAGE_MANAGER localizedLanguageNameForLanguageCode:LANGUAGE_CODES[row]];
-}
-
-- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
+- (void)languagePicker:(PWGLanguagePickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
     [self refreshWordsCountLabelText];
 }

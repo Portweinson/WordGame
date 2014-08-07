@@ -65,6 +65,7 @@
 		8498770019937867005525A3 /* Game+Extended.m in Sources */ = {isa = PBXBuildFile; fileRef = 849876FF19937866005525A3 /* Game+Extended.m */; };
 		8499A08D1992F05100041FE0 /* PWGWordsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8499A08C1992F05100041FE0 /* PWGWordsManager.m */; };
 		84CB7D111993B942009FF196 /* PWGLanguageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CB7D101993B942009FF196 /* PWGLanguageManager.m */; };
+		84CB7D151993BE7E009FF196 /* PWGLanguagePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CB7D141993BE7E009FF196 /* PWGLanguagePickerView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -188,6 +189,8 @@
 		8499A08C1992F05100041FE0 /* PWGWordsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWGWordsManager.m; sourceTree = "<group>"; };
 		84CB7D0F1993B942009FF196 /* PWGLanguageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWGLanguageManager.h; sourceTree = "<group>"; };
 		84CB7D101993B942009FF196 /* PWGLanguageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWGLanguageManager.m; sourceTree = "<group>"; };
+		84CB7D131993BE7E009FF196 /* PWGLanguagePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWGLanguagePickerView.h; sourceTree = "<group>"; };
+		84CB7D141993BE7E009FF196 /* PWGLanguagePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWGLanguagePickerView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -316,6 +319,7 @@
 		8436F19C199177F9004F7241 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				84CB7D121993BE49009FF196 /* Custom Controls */,
 				8436F176199177B9004F7241 /* Main.storyboard */,
 			);
 			name = View;
@@ -501,6 +505,15 @@
 			name = "Standard Classes Categories";
 			sourceTree = "<group>";
 		};
+		84CB7D121993BE49009FF196 /* Custom Controls */ = {
+			isa = PBXGroup;
+			children = (
+				84CB7D131993BE7E009FF196 /* PWGLanguagePickerView.h */,
+				84CB7D141993BE7E009FF196 /* PWGLanguagePickerView.m */,
+			);
+			name = "Custom Controls";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -642,6 +655,7 @@
 				8436F21519919B62004F7241 /* NSRelationshipDescription+MagicalDataImport.m in Sources */,
 				84633BC91992C743002D9F52 /* PWGGameSetupViewController.m in Sources */,
 				8436F21419919B62004F7241 /* NSObject+MagicalDataImport.m in Sources */,
+				84CB7D151993BE7E009FF196 /* PWGLanguagePickerView.m in Sources */,
 				8436F21B19919B62004F7241 /* NSManagedObject+MagicalRequests.m in Sources */,
 				8436F21C19919B62004F7241 /* NSManagedObjectContext+MagicalObserving.m in Sources */,
 				8436F22419919B62004F7241 /* MagicalRecord+ErrorHandling.m in Sources */,
