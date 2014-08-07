@@ -8,6 +8,7 @@
 
 #import "PWGEditDictViewController.h"
 #import "PWGWordsManager.h"
+#import "PWGAlphabets.h"
 #import "Word.h"
 
 static NSString *const kCellIDStandardWord = @"standardWordCell";
@@ -20,6 +21,7 @@ static NSString *const kCellIDUserWord = @"userWordCell";
 
 @property (strong, nonatomic) NSDictionary *words;
 @property (strong, nonatomic) NSArray *letters;
+@property (strong, nonatomic) NSString *selectedLanguageCode;
 
 @end
 
@@ -35,7 +37,8 @@ static NSString *const kCellIDUserWord = @"userWordCell";
 	// Do any additional setup after loading the view.
     
     /////TEMP/////
-    self.words = [WORDS_MANAGER wordsSectionedByFirstLetterForLanguage:kLanguageRussian];
+    self.selectedLanguageCode = kLanguageRussian;
+    self.words = [WORDS_MANAGER wordsSectionedByFirstLetterForLanguage:self.selectedLanguageCode];
     self.letters = [self.words allKeys];
     //////////////
 }
@@ -48,8 +51,6 @@ static NSString *const kCellIDUserWord = @"userWordCell";
 
 
 #pragma mark - UITableViewDelegate/UITableViewDataSource
-
-#pragma mark UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -97,6 +98,16 @@ static NSString *const kCellIDUserWord = @"userWordCell";
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
     return [self.letters objectAtIndex:section];
+}
+
+- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
+{
+    return [PWGAlphabets alphabetForLanguageWithCode:self.selectedLanguageCode];
+}
+
+- (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index
+{
+    return [self.letters indexOfObject:title];
 }
 
 
