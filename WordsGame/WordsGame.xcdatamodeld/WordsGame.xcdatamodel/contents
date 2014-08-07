@@ -4,7 +4,7 @@
         <attribute name="duration" optional="YES" attributeType="Double" minValueString="0" defaultValueString="0.0" syncable="YES"/>
         <attribute name="finishDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="language" optional="YES" attributeType="String" minValueString="2" maxValueString="3" defaultValueString="ru" syncable="YES"/>
-        <attribute name="name" optional="YES" attributeType="String" minValueString="1" maxValueString="25" defaultValueString="New" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" minValueString="1" maxValueString="25" defaultValueString="New game" syncable="YES"/>
         <attribute name="startDate" optional="YES" attributeType="Date" indexed="YES" syncable="YES"/>
         <relationship name="usedWords" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Word" inverseName="games" inverseEntity="Word" syncable="YES"/>
     </entity>

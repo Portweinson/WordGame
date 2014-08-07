@@ -6,6 +6,8 @@
   Copyright (c) 2014 Portweinson. All rights reserved.
 */
 
+//Game Entity
+"GAME Default name" = "New game";
 
 //Game Setup VC
 "GSVC LABEL Words count" = "Words in dictionary: %li";

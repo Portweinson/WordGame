@@ -60,6 +60,7 @@
 		84633BC019928B53002D9F52 /* PWGAlphabets.m in Sources */ = {isa = PBXBuildFile; fileRef = 84633BBF19928B53002D9F52 /* PWGAlphabets.m */; };
 		84633BC41992BD94002D9F52 /* PWGGamesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84633BC31992BD94002D9F52 /* PWGGamesManager.m */; };
 		84633BC91992C743002D9F52 /* PWGGameSetupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84633BC81992C743002D9F52 /* PWGGameSetupViewController.m */; };
+		8498770019937867005525A3 /* Game+Extended.m in Sources */ = {isa = PBXBuildFile; fileRef = 849876FF19937866005525A3 /* Game+Extended.m */; };
 		8499A0891992DE4F00041FE0 /* NSLocale+Extended.m in Sources */ = {isa = PBXBuildFile; fileRef = 8499A0881992DE4F00041FE0 /* NSLocale+Extended.m */; };
 		8499A08D1992F05100041FE0 /* PWGWordsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8499A08C1992F05100041FE0 /* PWGWordsManager.m */; };
 /* End PBXBuildFile section */
@@ -175,6 +176,8 @@
 		84633BC31992BD94002D9F52 /* PWGGamesManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWGGamesManager.m; sourceTree = "<group>"; };
 		84633BC71992C743002D9F52 /* PWGGameSetupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWGGameSetupViewController.h; sourceTree = "<group>"; };
 		84633BC81992C743002D9F52 /* PWGGameSetupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWGGameSetupViewController.m; sourceTree = "<group>"; };
+		849876FE19937866005525A3 /* Game+Extended.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Game+Extended.h"; sourceTree = "<group>"; };
+		849876FF19937866005525A3 /* Game+Extended.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Game+Extended.m"; sourceTree = "<group>"; };
 		8499A0871992DE4F00041FE0 /* NSLocale+Extended.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSLocale+Extended.h"; sourceTree = "<group>"; };
 		8499A0881992DE4F00041FE0 /* NSLocale+Extended.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSLocale+Extended.m"; sourceTree = "<group>"; };
 		8499A08B1992F05100041FE0 /* PWGWordsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWGWordsManager.h; sourceTree = "<group>"; };
@@ -332,6 +335,8 @@
 				8403560519921FE800947529 /* Word.m */,
 				84633BB8199278C7002D9F52 /* Game.h */,
 				84633BB9199278C7002D9F52 /* Game.m */,
+				849876FE19937866005525A3 /* Game+Extended.h */,
+				849876FF19937866005525A3 /* Game+Extended.m */,
 				8436F1A0199178B5004F7241 /* WordsGame.xcdatamodeld */,
 			);
 			name = CoreData;
@@ -600,6 +605,7 @@
 				8436F21819919B62004F7241 /* NSManagedObject+MagicalDataImport.m in Sources */,
 				8436F21619919B62004F7241 /* NSString+MagicalDataImport.m in Sources */,
 				8436F22819919B62004F7241 /* MagicalRecord+ShorthandSupport.m in Sources */,
+				8498770019937867005525A3 /* Game+Extended.m in Sources */,
 				8436F22719919B62004F7241 /* MagicalRecord+Setup.m in Sources */,
 				8436F171199177B9004F7241 /* main.m in Sources */,
 				8403560619921FE800947529 /* Word.m in Sources */,
