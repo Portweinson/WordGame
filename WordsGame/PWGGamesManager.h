@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+@class Game;
+
 @interface PWGGamesManager : NSObject
 
 @end

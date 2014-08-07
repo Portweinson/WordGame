@@ -14,5 +14,6 @@
 
 #define DATA_MANAGER [PWGDataManager sharedInstance]
 #define GAMES_MANAGER [PWGDataManager sharedInstance].gamesManager
+#define WORDS_MANAGER [PWGDataManager sharedInstance].wordsManager
 
 #endif

@@ -7,6 +7,7 @@
 //
 
 #import "PWGGamesManager.h"
+#import "Game.h"
 
 @implementation PWGGamesManager
 
