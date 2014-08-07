@@ -34,10 +34,11 @@ typedef NS_ENUM(NSInteger, ViewMode) {
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segCtrlViewModeSelection;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *barButtonSelectLanguage;
 
-
 @property (strong, nonatomic) NSDictionary *words;
 @property (strong, nonatomic) NSArray *letters;
 @property (strong, nonatomic) NSString *selectedLanguageCode;
+@property (strong, nonatomic) Word *selectedWord;
+
 @property (nonatomic) ViewMode viewMode;
 
 @end
@@ -55,8 +56,8 @@ typedef NS_ENUM(NSInteger, ViewMode) {
     
     /////TEMP/////
     [self.pickerLanguage selectDefaultLanguageRow:NO];
-    self.navigationItem.title = [LANGUAGE_MANAGER localizedLanguageNameForLanguageCode:self.selectedLanguageCode];
     self.selectedLanguageCode = kLanguageRussian;
+    self.navigationItem.title = [LANGUAGE_MANAGER localizedLanguageNameForLanguageCode:self.selectedLanguageCode];
     
     
     self.viewMode = self.segCtrlViewModeSelection.selectedSegmentIndex;
@@ -165,6 +166,16 @@ typedef NS_ENUM(NSInteger, ViewMode) {
 }
 
 
+#pragma mark - Navigation
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:kSegueIDEditDictToAddWord]) {
+        
+    }
+}
+
+
 #pragma mark - Data methods
 
 - (Word *)wordForIndexPath:(NSIndexPath *)indexPath
@@ -210,7 +221,10 @@ typedef NS_ENUM(NSInteger, ViewMode) {
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    Word *word = [self wordForIndexPath:indexPath];
+    BOOL showNoDefinitionIcon = ![word.meaning length] && [word.addedByUser boolValue];
     
+    cell.imageView.image = (showNoDefinitionIcon) ? [UIImage imageNamed:@"question mark icon"] : nil;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -218,6 +232,7 @@ typedef NS_ENUM(NSInteger, ViewMode) {
     Word *word = [self wordForIndexPath:indexPath];
     
     if ([word.addedByUser boolValue] == YES) {
+        self.selectedWord = word;
         [self performSegueWithIdentifier:kSegueIDEditDictToAddWord sender:self];
     }
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];

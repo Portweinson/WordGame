@@ -23,5 +23,6 @@
     #import "PWGUserDefaultKeys.h"
     #import "PWGShortcuts.h"
     #import "PWGLanguageCodes.h"
+    #import "PWGCommonMacroses.h"
 
 #endif

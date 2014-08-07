@@ -61,6 +61,7 @@
 		84633BC019928B53002D9F52 /* PWGAlphabets.m in Sources */ = {isa = PBXBuildFile; fileRef = 84633BBF19928B53002D9F52 /* PWGAlphabets.m */; };
 		84633BC41992BD94002D9F52 /* PWGGamesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84633BC31992BD94002D9F52 /* PWGGamesManager.m */; };
 		84633BC91992C743002D9F52 /* PWGGameSetupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84633BC81992C743002D9F52 /* PWGGameSetupViewController.m */; };
+		8474B93619941D46008E9F3D /* EditDictionaryScreen.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8474B93519941D46008E9F3D /* EditDictionaryScreen.xcassets */; };
 		8498770019937867005525A3 /* Game+Extended.m in Sources */ = {isa = PBXBuildFile; fileRef = 849876FF19937866005525A3 /* Game+Extended.m */; };
 		8499A08D1992F05100041FE0 /* PWGWordsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8499A08C1992F05100041FE0 /* PWGWordsManager.m */; };
 		84CB7D111993B942009FF196 /* PWGLanguageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CB7D101993B942009FF196 /* PWGLanguageManager.m */; };
@@ -99,7 +100,7 @@
 		8436F177199177B9004F7241 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8436F179199177B9004F7241 /* PWGFirstScreenViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWGFirstScreenViewController.h; sourceTree = "<group>"; };
 		8436F17A199177B9004F7241 /* PWGFirstScreenViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWGFirstScreenViewController.m; sourceTree = "<group>"; };
-		8436F17C199177B9004F7241 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = WordsGame/Images.xcassets; sourceTree = "<group>"; };
+		8436F17C199177B9004F7241 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		8436F182199177B9004F7241 /* WordsGameTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WordsGameTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8436F183199177B9004F7241 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		8436F18B199177B9004F7241 /* WordsGameTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "WordsGameTests-Info.plist"; sourceTree = "<group>"; };
@@ -183,6 +184,8 @@
 		84633BC31992BD94002D9F52 /* PWGGamesManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWGGamesManager.m; sourceTree = "<group>"; };
 		84633BC71992C743002D9F52 /* PWGGameSetupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWGGameSetupViewController.h; sourceTree = "<group>"; };
 		84633BC81992C743002D9F52 /* PWGGameSetupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWGGameSetupViewController.m; sourceTree = "<group>"; };
+		8474B93519941D46008E9F3D /* EditDictionaryScreen.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = EditDictionaryScreen.xcassets; sourceTree = "<group>"; };
+		8474B93719943551008E9F3D /* PWGCommonMacroses.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWGCommonMacroses.h; sourceTree = "<group>"; };
 		849876FE19937866005525A3 /* Game+Extended.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Game+Extended.h"; sourceTree = "<group>"; };
 		849876FF19937866005525A3 /* Game+Extended.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Game+Extended.m"; sourceTree = "<group>"; };
 		8499A08B1992F05100041FE0 /* PWGWordsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWGWordsManager.h; sourceTree = "<group>"; };
@@ -230,7 +233,6 @@
 				8436F16A199177B9004F7241 /* WordsGame */,
 				8436F173199177B9004F7241 /* PWGAppDelegate.h */,
 				8436F174199177B9004F7241 /* PWGAppDelegate.m */,
-				8436F17C199177B9004F7241 /* Images.xcassets */,
 				8436F1D119919AFD004F7241 /* 3rdParty */,
 				8436F189199177B9004F7241 /* WordsGameTests */,
 				8436F163199177B9004F7241 /* Frameworks */,
@@ -370,6 +372,7 @@
 		8436F19F19917846004F7241 /* Resourses */ = {
 			isa = PBXGroup;
 			children = (
+				8474B93419941CA6008E9F3D /* Images */,
 				84633BAD19922F7D002D9F52 /* Words PLists */,
 				840355F21991BABB00947529 /* Localizable.strings */,
 			);
@@ -493,6 +496,7 @@
 			isa = PBXGroup;
 			children = (
 				8436F22E1991A3D3004F7241 /* PWGShortcuts.h */,
+				8474B93719943551008E9F3D /* PWGCommonMacroses.h */,
 				8436F22C1991A145004F7241 /* PWGUserDefaultKeys.h */,
 				84633BC119928C4F002D9F52 /* PWGLanguageCodes.h */,
 			);
@@ -505,6 +509,15 @@
 				84633BB019922FF9002D9F52 /* ruWords.plist */,
 			);
 			name = "Words PLists";
+			sourceTree = "<group>";
+		};
+		8474B93419941CA6008E9F3D /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				8436F17C199177B9004F7241 /* Images.xcassets */,
+				8474B93519941D46008E9F3D /* EditDictionaryScreen.xcassets */,
+			);
+			name = Images;
 			sourceTree = "<group>";
 		};
 		8499A0861992DE1000041FE0 /* Standard Classes Categories */ = {
@@ -601,6 +614,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				84633BB119922FF9002D9F52 /* ruWords.plist in Resources */,
+				8474B93619941D46008E9F3D /* EditDictionaryScreen.xcassets in Resources */,
 				8436F17D199177B9004F7241 /* Images.xcassets in Resources */,
 				840355F31991BABB00947529 /* Localizable.strings in Resources */,
 				8436F16F199177B9004F7241 /* InfoPlist.strings in Resources */,

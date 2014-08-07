@@ -10,22 +10,22 @@
 
 @interface PWGAddWordViewController ()
 
+@property (weak, nonatomic) IBOutlet UITextField *textFieldWord;
+@property (weak, nonatomic) IBOutlet UITextView *textViewDefinition;
+@property (weak, nonatomic) IBOutlet UIButton *buttonCancel;
+@property (weak, nonatomic) IBOutlet UIButton *buttonDone;
+
 @end
+
 
 @implementation PWGAddWordViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
+#pragma mark - View Lifecycle
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self decorateTextView];
 	// Do any additional setup after loading the view.
 }
 
@@ -34,5 +34,29 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
+#pragma mark - View additional setup
+
+- (void)decorateTextView
+{
+    self.textViewDefinition.layer.borderColor = RGBColor(220, 220, 220).CGColor;
+    self.textViewDefinition.layer.borderWidth = 0.8f;
+    self.textViewDefinition.layer.cornerRadius = 8.0f;
+}
+
+
+#pragma mark - Actions
+
+- (IBAction)doneButtonPressed:(UIButton *)sender
+{
+    
+}
+
+- (IBAction)cancelButtonPressed:(UIButton *)sender
+{
+    [self.presentingViewController dismissViewControllerAnimated:YES completion:^{}];
+}
+
 
 @end
