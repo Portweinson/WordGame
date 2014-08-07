@@ -7,8 +7,8 @@
 //
 
 #import "PWGGameSetupViewController.h"
-#import "NSLocale+Extended.h"
 #import "PWGWordsManager.h"
+#import "PWGLanguageManager.h"
 #import "Game+Extended.h"
 
 static NSString *const kSegueIDGameSetupToGame = @"Game setup to Game";
@@ -121,7 +121,7 @@ static NSString *const kSegueIDGameSetupToGame = @"Game setup to Game";
 
 - (void)selectDefaultPickerRow
 {
-    NSString *language = [NSLocale defaultLanguageCode];
+    NSString *language = [LANGUAGE_MANAGER defaultLanguageCode];
     NSUInteger index = [LANGUAGE_CODES indexOfObject:language];
     [self.pickerGameLanguage selectRow:index inComponent:0 animated:NO];
 }
@@ -145,7 +145,7 @@ static NSString *const kSegueIDGameSetupToGame = @"Game setup to Game";
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
-    return [NSLocale localizedLanguageNameForLanguageCode:LANGUAGE_CODES[row]];
+    return [LANGUAGE_MANAGER localizedLanguageNameForLanguageCode:LANGUAGE_CODES[row]];
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component

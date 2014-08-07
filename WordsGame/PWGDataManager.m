@@ -9,6 +9,7 @@
 #import "PWGDataManager.h"
 #import "PWGGamesManager.h"
 #import "PWGWordsManager.h"
+#import "PWGLanguageManager.h"
 #import "PWGWordsDataImporter.h"
 
 @implementation PWGDataManager
@@ -31,6 +32,7 @@ static PWGDataManager *sharedInstance = nil;
 	self = [super init];
 	if (self) {
         self.wordsDataImporter = [PWGWordsDataImporter new];
+        self.languageManager = [PWGLanguageManager new];
         self.gamesManager = [PWGGamesManager new];
         self.wordsManager = [PWGWordsManager new];
 	}

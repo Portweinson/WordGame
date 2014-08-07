@@ -10,5 +10,6 @@
 #define WordsGame_PWGUserDefaultKeys_h
 
 static NSString *const kUDKeyIsNotFirstAppLaunch = @"isNotFirstAppLaunch";
+static NSString *const kUDKeyLastUsedLanguage = @"lastUsedLanguage";
 
 #endif

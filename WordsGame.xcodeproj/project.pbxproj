@@ -63,8 +63,8 @@
 		84633BC41992BD94002D9F52 /* PWGGamesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84633BC31992BD94002D9F52 /* PWGGamesManager.m */; };
 		84633BC91992C743002D9F52 /* PWGGameSetupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84633BC81992C743002D9F52 /* PWGGameSetupViewController.m */; };
 		8498770019937867005525A3 /* Game+Extended.m in Sources */ = {isa = PBXBuildFile; fileRef = 849876FF19937866005525A3 /* Game+Extended.m */; };
-		8499A0891992DE4F00041FE0 /* NSLocale+Extended.m in Sources */ = {isa = PBXBuildFile; fileRef = 8499A0881992DE4F00041FE0 /* NSLocale+Extended.m */; };
 		8499A08D1992F05100041FE0 /* PWGWordsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8499A08C1992F05100041FE0 /* PWGWordsManager.m */; };
+		84CB7D111993B942009FF196 /* PWGLanguageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CB7D101993B942009FF196 /* PWGLanguageManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -184,10 +184,10 @@
 		84633BC81992C743002D9F52 /* PWGGameSetupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWGGameSetupViewController.m; sourceTree = "<group>"; };
 		849876FE19937866005525A3 /* Game+Extended.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Game+Extended.h"; sourceTree = "<group>"; };
 		849876FF19937866005525A3 /* Game+Extended.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Game+Extended.m"; sourceTree = "<group>"; };
-		8499A0871992DE4F00041FE0 /* NSLocale+Extended.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSLocale+Extended.h"; sourceTree = "<group>"; };
-		8499A0881992DE4F00041FE0 /* NSLocale+Extended.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSLocale+Extended.m"; sourceTree = "<group>"; };
 		8499A08B1992F05100041FE0 /* PWGWordsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWGWordsManager.h; sourceTree = "<group>"; };
 		8499A08C1992F05100041FE0 /* PWGWordsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWGWordsManager.m; sourceTree = "<group>"; };
+		84CB7D0F1993B942009FF196 /* PWGLanguageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWGLanguageManager.h; sourceTree = "<group>"; };
+		84CB7D101993B942009FF196 /* PWGLanguageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWGLanguageManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -298,6 +298,8 @@
 			children = (
 				84633BBE19928B53002D9F52 /* PWGAlphabets.h */,
 				84633BBF19928B53002D9F52 /* PWGAlphabets.m */,
+				84CB7D0F1993B942009FF196 /* PWGLanguageManager.h */,
+				84CB7D101993B942009FF196 /* PWGLanguageManager.m */,
 				8436F2331991AF05004F7241 /* PWGWordsDataImporter.h */,
 				8436F2341991AF05004F7241 /* PWGWordsDataImporter.m */,
 				8499A08B1992F05100041FE0 /* PWGWordsManager.h */,
@@ -495,8 +497,6 @@
 		8499A0861992DE1000041FE0 /* Standard Classes Categories */ = {
 			isa = PBXGroup;
 			children = (
-				8499A0871992DE4F00041FE0 /* NSLocale+Extended.h */,
-				8499A0881992DE4F00041FE0 /* NSLocale+Extended.m */,
 			);
 			name = "Standard Classes Categories";
 			sourceTree = "<group>";
@@ -604,7 +604,6 @@
 				8436F17B199177B9004F7241 /* PWGFirstScreenViewController.m in Sources */,
 				8436F21719919B62004F7241 /* NSManagedObject+MagicalAggregation.m in Sources */,
 				8436F21219919B62004F7241 /* NSEntityDescription+MagicalDataImport.m in Sources */,
-				8499A0891992DE4F00041FE0 /* NSLocale+Extended.m in Sources */,
 				8436F21E19919B62004F7241 /* NSManagedObjectContext+MagicalSaves.m in Sources */,
 				8436F21D19919B62004F7241 /* NSManagedObjectContext+MagicalRecord.m in Sources */,
 				8436F2321991AA37004F7241 /* PWGDataManager.m in Sources */,
@@ -615,6 +614,7 @@
 				8436F21819919B62004F7241 /* NSManagedObject+MagicalDataImport.m in Sources */,
 				8436F21619919B62004F7241 /* NSString+MagicalDataImport.m in Sources */,
 				8436F22819919B62004F7241 /* MagicalRecord+ShorthandSupport.m in Sources */,
+				84CB7D111993B942009FF196 /* PWGLanguageManager.m in Sources */,
 				8498770019937867005525A3 /* Game+Extended.m in Sources */,
 				8436F22719919B62004F7241 /* MagicalRecord+Setup.m in Sources */,
 				8436F171199177B9004F7241 /* main.m in Sources */,

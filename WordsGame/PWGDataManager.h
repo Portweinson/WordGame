@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@class PWGWordsDataImporter, PWGGamesManager, PWGWordsManager;
+@class PWGWordsDataImporter, PWGGamesManager, PWGWordsManager, PWGLanguageManager;
 
 
 @interface PWGDataManager : NSObject
@@ -19,6 +19,7 @@
 @property (nonatomic, strong) PWGWordsDataImporter *wordsDataImporter;
 @property (nonatomic, strong) PWGGamesManager *gamesManager;
 @property (nonatomic, strong) PWGWordsManager *wordsManager;
+@property (nonatomic, strong) PWGLanguageManager *languageManager;
 
 
 #pragma mark - Class methods
