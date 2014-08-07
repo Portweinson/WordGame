@@ -261,8 +261,8 @@
                                             <rect key="frame" x="16" y="7" width="141" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <segments>
-                                                <segment title="All words"/>
                                                 <segment title="Editable"/>
+                                                <segment title="All words"/>
                                             </segments>
                                             <connections>
                                                 <action selector="viewModeSelectionControlValueChanged:" destination="IpD-hX-3BY" eventType="valueChanged" id="zNJ-Bl-611"/>

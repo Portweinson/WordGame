@@ -18,6 +18,11 @@ static NSString *const kCellIDUserWord = @"userWordCell";
 
 static NSString *const kSegueIDEditDictToAddWord = @"EditDict Screen to AddWord";
 
+typedef NS_ENUM(NSInteger, ViewMode) {
+    kViewModeEditable = 0,
+    kViewModeAllWords
+};
+
 
 @interface PWGEditDictViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -33,6 +38,7 @@ static NSString *const kSegueIDEditDictToAddWord = @"EditDict Screen to AddWord"
 @property (strong, nonatomic) NSDictionary *words;
 @property (strong, nonatomic) NSArray *letters;
 @property (strong, nonatomic) NSString *selectedLanguageCode;
+@property (nonatomic) ViewMode viewMode;
 
 @end
 
@@ -51,7 +57,16 @@ static NSString *const kSegueIDEditDictToAddWord = @"EditDict Screen to AddWord"
     [self.pickerLanguage selectDefaultLanguageRow:NO];
     self.navigationItem.title = [LANGUAGE_MANAGER localizedLanguageNameForLanguageCode:self.selectedLanguageCode];
     self.selectedLanguageCode = kLanguageRussian;
-    self.words = [WORDS_MANAGER wordsSectionedByFirstLetterForLanguage:self.selectedLanguageCode];
+    
+    
+    self.viewMode = self.segCtrlViewModeSelection.selectedSegmentIndex;
+    
+    if (self.viewMode == kViewModeEditable) {
+        self.words = [WORDS_MANAGER wordsSectionedByFirstLetterForLanguage:self.selectedLanguageCode addedByUser:YES];
+    } else {
+        self.words = [WORDS_MANAGER wordsSectionedByFirstLetterForLanguage:self.selectedLanguageCode];
+    }
+    
     self.letters = [self.words allKeys];
     //////////////
 }
@@ -77,7 +92,11 @@ static NSString *const kSegueIDEditDictToAddWord = @"EditDict Screen to AddWord"
     if (! [selectedLanguage isEqualToString:self.selectedLanguageCode]) {
         self.selectedLanguageCode = selectedLanguage;
         /////TEMP/////
-        self.words = [WORDS_MANAGER wordsSectionedByFirstLetterForLanguage:self.selectedLanguageCode];
+        if (self.viewMode == kViewModeEditable) {
+            self.words = [WORDS_MANAGER wordsSectionedByFirstLetterForLanguage:self.selectedLanguageCode addedByUser:YES];
+        } else {
+            self.words = [WORDS_MANAGER wordsSectionedByFirstLetterForLanguage:self.selectedLanguageCode];
+        }
         self.letters = [self.words allKeys];
         [self.tableView reloadData];
         self.navigationItem.title = [LANGUAGE_MANAGER localizedLanguageNameForLanguageCode:self.selectedLanguageCode];
@@ -94,7 +113,18 @@ static NSString *const kSegueIDEditDictToAddWord = @"EditDict Screen to AddWord"
 
 - (IBAction)viewModeSelectionControlValueChanged:(UISegmentedControl *)sender
 {
+    self.viewMode = sender.selectedSegmentIndex;
     
+    /////TEMP/////
+    if (self.viewMode == kViewModeEditable) {
+        self.words = [WORDS_MANAGER wordsSectionedByFirstLetterForLanguage:self.selectedLanguageCode addedByUser:YES];
+    } else {
+        self.words = [WORDS_MANAGER wordsSectionedByFirstLetterForLanguage:self.selectedLanguageCode];
+    }
+    self.letters = [self.words allKeys];
+    [self.tableView reloadData];
+    self.navigationItem.title = [LANGUAGE_MANAGER localizedLanguageNameForLanguageCode:self.selectedLanguageCode];
+    //////////////
 }
 
 - (IBAction)selectLanguageButtonPressed:(UIBarButtonItem *)sender
