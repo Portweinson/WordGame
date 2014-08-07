@@ -165,6 +165,16 @@ typedef NS_ENUM(NSInteger, ViewMode) {
 }
 
 
+#pragma mark - Data methods
+
+- (Word *)wordForIndexPath:(NSIndexPath *)indexPath
+{
+    NSString *sectionLetter = [self.letters objectAtIndex:indexPath.section];
+    NSArray *sectionWords = [self.words objectForKey:sectionLetter];
+    return [sectionWords objectAtIndex:indexPath.row];
+}
+
+
 #pragma mark - UITableViewDelegate/UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -183,9 +193,7 @@ typedef NS_ENUM(NSInteger, ViewMode) {
 {
     UITableViewCell *cell;
     
-    NSString *sectionLetter = [self.letters objectAtIndex:indexPath.section];
-    NSArray *sectionWords = [self.words objectForKey:sectionLetter];
-    Word *word = [sectionWords objectAtIndex:indexPath.row];
+    Word *word = [self wordForIndexPath:indexPath];
     
     if ([word.addedByUser boolValue] == YES) {
         cell = [self.tableView dequeueReusableCellWithIdentifier:kCellIDUserWord];
@@ -207,7 +215,12 @@ typedef NS_ENUM(NSInteger, ViewMode) {
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    Word *word = [self wordForIndexPath:indexPath];
     
+    if ([word.addedByUser boolValue] == YES) {
+        [self performSegueWithIdentifier:kSegueIDEditDictToAddWord sender:self];
+    }
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
