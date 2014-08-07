@@ -9,6 +9,7 @@
 #import "PWGFirstScreenViewController.h"
 
 static NSString *const kSegueIDFirstToGameSetup = @"First Screen to Game Setup";
+static NSString *const kSegueIDFirstToEditDict = @"First Screen to Edit Dict";
 
 
 @interface PWGFirstScreenViewController ()
@@ -16,6 +17,7 @@ static NSString *const kSegueIDFirstToGameSetup = @"First Screen to Game Setup";
 @property (weak, nonatomic) IBOutlet UIButton *buttonNewGame;
 @property (weak, nonatomic) IBOutlet UIButton *buttonContinueGame;
 @property (weak, nonatomic) IBOutlet UIButton *buttonFinishedGames;
+@property (weak, nonatomic) IBOutlet UIButton *buttonEditDictionary;
 
 
 @end
@@ -53,6 +55,11 @@ static NSString *const kSegueIDFirstToGameSetup = @"First Screen to Game Setup";
 - (IBAction)finishedGamesButtonPressed:(UIButton *)sender
 {
     
+}
+
+- (IBAction)editDictionaryButtonPressed:(UIButton *)sender
+{
+    [self performSegueWithIdentifier:kSegueIDFirstToEditDict sender:self];
 }
 
 

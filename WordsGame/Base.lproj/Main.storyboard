@@ -29,7 +29,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="New game" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="b0e-Ej-MYg">
-                                <rect key="frame" x="20" y="135" width="280" height="30"/>
+                                <rect key="frame" x="20" y="135" width="280" height="36"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -72,11 +72,31 @@
                         <outlet property="labelWordsCount" destination="xiQ-dA-Adq" id="6Nc-AY-bZh"/>
                         <outlet property="pickerGameLanguage" destination="9MD-pa-MaY" id="2WZ-dw-BKv"/>
                         <outlet property="textFieldGameName" destination="b0e-Ej-MYg" id="teg-Hk-1Db"/>
+                        <segue destination="KBM-aN-5Ox" kind="push" identifier="Game setup to Game" id="Efy-k1-RwN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qdc-ws-oe0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="820" y="-563"/>
+        </scene>
+        <!--Game View Controller - Game-->
+        <scene sceneID="dGc-NZ-B0Y">
+            <objects>
+                <viewController id="KBM-aN-5Ox" customClass="PWGGameViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Ntf-1E-hyU"/>
+                        <viewControllerLayoutGuide type="bottom" id="2tt-xS-M7L"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8QG-YS-8Zw">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Game" id="PRF-lA-KO0"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="o43-yB-mm9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1286" y="-563"/>
         </scene>
         <!--First Screen View Controller-->
         <scene sceneID="ufC-wZ-h7g">
@@ -120,20 +140,51 @@
                                     <action selector="finishedGamesButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="LrI-ks-UBr"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gzH-g7-EUc">
+                                <rect key="frame" x="20" y="314" width="280" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Edit dictionary">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="editDictionaryButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="h4V-K1-BvI"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="eCO-ju-XoT"/>
                     <connections>
                         <outlet property="buttonContinueGame" destination="ezc-Ch-Bjf" id="Axy-wy-OxL"/>
+                        <outlet property="buttonEditDictionary" destination="gzH-g7-EUc" id="HLU-yl-4cd"/>
                         <outlet property="buttonFinishedGames" destination="Bln-sl-0lS" id="zhj-OT-sV9"/>
                         <outlet property="buttonNewGame" destination="43C-96-W7n" id="b1H-ua-1oz"/>
                         <segue destination="Tn7-vz-Q7L" kind="push" identifier="First Screen to Game Setup" id="ryA-Ny-hxK"/>
+                        <segue destination="IpD-hX-3BY" kind="push" identifier="First Screen to Edit Dict" id="1tk-nO-id5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="282" y="-77"/>
+        </scene>
+        <!--Edit Dict View Controller-->
+        <scene sceneID="DSv-jz-t3q">
+            <objects>
+                <viewController id="IpD-hX-3BY" customClass="PWGEditDictViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="lDe-X8-HKe"/>
+                        <viewControllerLayoutGuide type="bottom" id="Xoh-C3-eLH"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Cod-qk-KdM">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Uem-Mn-Dcw"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uZ1-gn-DKJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="820" y="307"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="1v4-Dd-RTz">

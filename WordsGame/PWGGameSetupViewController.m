@@ -11,6 +11,9 @@
 #import "PWGWordsManager.h"
 #import "Game+Extended.h"
 
+static NSString *const kSegueIDGameSetupToGame = @"Game setup to Game";
+
+
 @interface PWGGameSetupViewController () <UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate, UIGestureRecognizerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *barButtonDone;
@@ -21,6 +24,7 @@
 @property (nonatomic, strong) UITapGestureRecognizer *hideKeyboardTapRecognizer;
 
 @end
+
 
 @implementation PWGGameSetupViewController
 
@@ -66,7 +70,7 @@
 
 - (IBAction)doneButtonPressed:(UIBarButtonItem *)sender
 {
-    
+    [self performSegueWithIdentifier:kSegueIDGameSetupToGame sender:self];
 }
 
 - (IBAction)hideKeyboardTapRecognized:(UITapGestureRecognizer *)sender
@@ -79,6 +83,10 @@
 
 #pragma mark - Navigation
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    
+}
 
 
 #pragma mark -
