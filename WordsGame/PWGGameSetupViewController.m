@@ -9,13 +9,16 @@
 #import "PWGGameSetupViewController.h"
 #import "NSLocale+Extended.h"
 #import "PWGWordsManager.h"
+#import "Game+Extended.h"
 
-@interface PWGGameSetupViewController () <UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate>
+@interface PWGGameSetupViewController () <UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate, UIGestureRecognizerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *barButtonDone;
 @property (weak, nonatomic) IBOutlet UITextField *textFieldGameName;
 @property (weak, nonatomic) IBOutlet UIPickerView *pickerGameLanguage;
 @property (weak, nonatomic) IBOutlet UILabel *labelWordsCount;
+
+@property (nonatomic, strong) UITapGestureRecognizer *hideKeyboardTapRecognizer;
 
 @end
 
@@ -42,6 +45,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
     [self selectDefaultPickerRow];
     [self refreshWordsCountLabelText];
 }
@@ -65,6 +69,13 @@
     
 }
 
+- (IBAction)hideKeyboardTapRecognized:(UITapGestureRecognizer *)sender
+{
+    if ([self.textFieldGameName isFirstResponder]) {
+        [self.textFieldGameName resignFirstResponder];
+    }
+}
+
 
 #pragma mark - Navigation
 
@@ -77,6 +88,25 @@
     NSUInteger count = [WORDS_MANAGER wordsCountForLanguageCode:[self languageCodeForSelectedPickerRow]];
     NSString *labelText = [NSString stringWithFormat:NSLocalizedString(@"GSVC LABEL Words count", nil), count];
     self.labelWordsCount.text = labelText;
+}
+
+
+#pragma mark - Keyboard notification handlers
+
+- (void) keyboardShowNotificationHandler:(NSNotification *)notification
+{
+    self.hideKeyboardTapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboardTapRecognized:)];
+    self.hideKeyboardTapRecognizer.cancelsTouchesInView = YES;
+    self.hideKeyboardTapRecognizer.delegate = self;
+    [self.view addGestureRecognizer:self.hideKeyboardTapRecognizer];
+    
+}
+
+- (void) keyboardHideNotificationHandler:(NSNotification *)notification
+{
+    self.hideKeyboardTapRecognizer.delegate = nil;
+    [self.view removeGestureRecognizer:self.hideKeyboardTapRecognizer];
+    self.hideKeyboardTapRecognizer = nil;
 }
 
 #pragma mark - UIPickerView methods
@@ -121,6 +151,25 @@
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     [textField resignFirstResponder];
+    return YES;
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    NSUInteger currentTextLength = [textField.text length];
+    NSUInteger replacementTextLength = [string length];
+    NSUInteger rangeLength = range.length;
+    NSUInteger newLength = currentTextLength - rangeLength + replacementTextLength;
+    
+    return newLength <= kGameNameLengthLimit;
+}
+
+
+#pragma mark - UIGestureRecognizerDelegate
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
+{
+    //На случай усложнения логики работы жеста скрытия клавиатуры, пока просто возвращаем YES
     return YES;
 }
 
