@@ -8,16 +8,27 @@
 
 #import "PWGEditDictViewController.h"
 #import "PWGWordsManager.h"
+#import "PWGLanguageManager.h"
 #import "PWGAlphabets.h"
 #import "Word.h"
+#import "PWGLanguagePickerView.h"
 
 static NSString *const kCellIDStandardWord = @"standardWordCell";
 static NSString *const kCellIDUserWord = @"userWordCell";
+
+static NSString *const kSegueIDEditDictToAddWord = @"EditDict Screen to AddWord";
 
 
 @interface PWGEditDictViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIView *viewFadingBackground;
+@property (weak, nonatomic) IBOutlet PWGLanguagePickerView *pickerLanguage;
+@property (weak, nonatomic) IBOutlet UIButton *buttonLanguageSelectionDone;
+@property (weak, nonatomic) IBOutlet UIButton *buttonLanguageSelectionCancel;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *segCtrlViewModeSelection;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *barButtonSelectLanguage;
+
 
 @property (strong, nonatomic) NSDictionary *words;
 @property (strong, nonatomic) NSArray *letters;
@@ -37,6 +48,8 @@ static NSString *const kCellIDUserWord = @"userWordCell";
 	// Do any additional setup after loading the view.
     
     /////TEMP/////
+    [self.pickerLanguage selectDefaultLanguageRow:NO];
+    self.navigationItem.title = [LANGUAGE_MANAGER localizedLanguageNameForLanguageCode:self.selectedLanguageCode];
     self.selectedLanguageCode = kLanguageRussian;
     self.words = [WORDS_MANAGER wordsSectionedByFirstLetterForLanguage:self.selectedLanguageCode];
     self.letters = [self.words allKeys];
@@ -47,6 +60,78 @@ static NSString *const kCellIDUserWord = @"userWordCell";
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+
+#pragma mark - Actions
+
+- (IBAction)hideLanguagePickerGetureRecognized:(UITapGestureRecognizer *)sender
+{
+    [self hideLanguageSelectionView];
+}
+
+- (IBAction)doneLanguageSelectionButtonPressed:(UIButton *)sender
+{
+    NSString *selectedLanguage = [self.pickerLanguage languageCodeForSelectedPickerRow];
+    
+    if (! [selectedLanguage isEqualToString:self.selectedLanguageCode]) {
+        self.selectedLanguageCode = selectedLanguage;
+        /////TEMP/////
+        self.words = [WORDS_MANAGER wordsSectionedByFirstLetterForLanguage:self.selectedLanguageCode];
+        self.letters = [self.words allKeys];
+        [self.tableView reloadData];
+        self.navigationItem.title = [LANGUAGE_MANAGER localizedLanguageNameForLanguageCode:self.selectedLanguageCode];
+        //////////////
+    }
+    
+    [self hideLanguageSelectionView];
+}
+
+- (IBAction)cancelLanguageSelectionButtonPressed:(UIButton *)sender
+{
+    [self hideLanguageSelectionView];
+}
+
+- (IBAction)viewModeSelectionControlValueChanged:(UISegmentedControl *)sender
+{
+    
+}
+
+- (IBAction)selectLanguageButtonPressed:(UIBarButtonItem *)sender
+{
+    [self showLanguageSelectionView];
+}
+
+- (IBAction)adWordButtonPressed:(UIBarButtonItem *)sender
+{
+    [self performSegueWithIdentifier:kSegueIDEditDictToAddWord sender:self];
+}
+
+
+#pragma mark -
+
+- (void)showLanguageSelectionView
+{
+    if (self.viewFadingBackground.isHidden) {
+        self.viewFadingBackground.alpha = 0.0;
+        self.viewFadingBackground.hidden = NO;
+        
+        [UIView animateWithDuration:0.25 animations:^ {
+            self.viewFadingBackground.alpha = 1.0;
+        } completion:^(BOOL finished) {
+        }];
+    }
+}
+
+- (void)hideLanguageSelectionView
+{
+    if (! self.viewFadingBackground.isHidden) {
+        [UIView animateWithDuration:0.25 animations:^ {
+            self.viewFadingBackground.alpha = 0.0;
+        } completion:^(BOOL finished) {
+            self.viewFadingBackground.hidden = YES;
+        }];
+    }
 }
 
 

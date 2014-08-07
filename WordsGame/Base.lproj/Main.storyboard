@@ -4,6 +4,24 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
     <scenes>
+        <!--Add Word View Controller-->
+        <scene sceneID="D19-MJ-77M">
+            <objects>
+                <viewController id="FBi-U3-eMN" customClass="PWGAddWordViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="bx4-hV-miU"/>
+                        <viewControllerLayoutGuide type="bottom" id="7iP-fB-YFe"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="l27-zt-Hxt">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lLQ-0d-7Qv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1314" y="184"/>
+        </scene>
         <!--Game Setup View Controller - Game setup-->
         <scene sceneID="bzP-9a-yYX">
             <objects>
@@ -23,7 +41,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Language:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0oG-CD-Ug1">
-                                <rect key="frame" x="20" y="194" width="90" height="21"/>
+                                <rect key="frame" x="20" y="179" width="90" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
@@ -246,23 +264,91 @@
                                                 <segment title="All words"/>
                                                 <segment title="Editable"/>
                                             </segments>
+                                            <connections>
+                                                <action selector="viewModeSelectionControlValueChanged:" destination="IpD-hX-3BY" eventType="valueChanged" id="zNJ-Bl-611"/>
+                                            </connections>
                                         </segmentedControl>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="QGV-Lp-hOK"/>
-                                    <barButtonItem title="Select language" id="22l-Mf-4Sc"/>
+                                    <barButtonItem title="Select language" id="22l-Mf-4Sc">
+                                        <connections>
+                                            <action selector="selectLanguageButtonPressed:" destination="IpD-hX-3BY" id="CiB-44-sNT"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
+                            <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gLO-Kc-8JR" userLabel="View fadeUI">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eKm-M4-cpb">
+                                        <rect key="frame" x="215" y="348" width="85" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="85" id="WWG-Cu-lwc"/>
+                                        </constraints>
+                                        <state key="normal" title="Done">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="doneLanguageSelectionButtonPressed:" destination="IpD-hX-3BY" eventType="touchUpInside" id="K4R-lX-2f4"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9vX-kx-uqj">
+                                        <rect key="frame" x="20" y="348" width="85" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="85" id="yst-7h-nlg"/>
+                                        </constraints>
+                                        <state key="normal" title="Cancel">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="cancelLanguageSelectionButtonPressed:" destination="IpD-hX-3BY" eventType="touchUpInside" id="XXN-ab-LhG"/>
+                                        </connections>
+                                    </button>
+                                    <pickerView contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5W0-kO-tXL" customClass="PWGLanguagePickerView">
+                                        <rect key="frame" x="0.0" y="386" width="320" height="162"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                    </pickerView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.99321395990000005" alpha="0.95000000000000007" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstItem="5W0-kO-tXL" firstAttribute="top" relation="lessThanOrEqual" secondItem="eKm-M4-cpb" secondAttribute="bottom" constant="8" symbolic="YES" id="cAf-my-FiY"/>
+                                    <constraint firstItem="5W0-kO-tXL" firstAttribute="top" relation="lessThanOrEqual" secondItem="9vX-kx-uqj" secondAttribute="bottom" constant="8" symbolic="YES" id="vBT-ai-2Mq"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="W4O-eq-LgM" appends="YES" id="4V1-Ug-0PL"/>
+                                </connections>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Words" id="Uem-Mn-Dcw">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="IUk-nf-LcU"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="IUk-nf-LcU">
+                            <connections>
+                                <action selector="adWordButtonPressed:" destination="IpD-hX-3BY" id="XRb-E5-flR"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="barButtonSelectLanguage" destination="22l-Mf-4Sc" id="E5q-IA-JSR"/>
+                        <outlet property="buttonLanguageSelectionCancel" destination="9vX-kx-uqj" id="Udd-ad-Zj0"/>
+                        <outlet property="buttonLanguageSelectionDone" destination="eKm-M4-cpb" id="uZN-Ml-M5s"/>
+                        <outlet property="pickerLanguage" destination="5W0-kO-tXL" id="47N-VB-Ae9"/>
+                        <outlet property="segCtrlViewModeSelection" destination="1Dh-y6-bfe" id="0cs-h3-YIZ"/>
                         <outlet property="tableView" destination="ebE-g3-wRb" id="Xnk-sw-aZb"/>
+                        <outlet property="viewFadingBackground" destination="gLO-Kc-8JR" id="v3v-1f-tB1"/>
+                        <segue destination="FBi-U3-eMN" kind="modal" identifier="EditDict Screen to AddWord" id="GB7-Jr-a89"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uZ1-gn-DKJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="W4O-eq-LgM">
+                    <connections>
+                        <action selector="hideLanguagePickerGetureRecognized:" destination="IpD-hX-3BY" id="sHt-T4-Ct4"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="820" y="307"/>
         </scene>
