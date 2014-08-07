@@ -7,8 +7,13 @@
 //
 
 #import "PWGGamesManager.h"
-#import "Game.h"
+#import "Game+Extended.h"
 
 @implementation PWGGamesManager
+
+- (Game *)createGameNamed:(NSString *)name withLanguage:(NSString *)languageCode
+{
+    return nil;
+}
 
 @end
