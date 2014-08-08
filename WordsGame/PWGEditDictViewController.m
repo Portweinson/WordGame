@@ -243,6 +243,13 @@ typedef NS_ENUM(NSInteger, ViewMode) {
     return [self.letters objectAtIndex:section];
 }
 
+- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
+{
+    Word *word = [self wordForIndexPath:indexPath];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[word.word capitalizedString] message:word.meaning delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+    [alert show];
+}
+
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
 {
     return [PWGAlphabets alphabetForLanguageWithCode:self.selectedLanguageCode];
