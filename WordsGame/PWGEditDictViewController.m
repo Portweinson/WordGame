@@ -57,7 +57,7 @@ typedef NS_ENUM(NSInteger, ViewMode) {
     /////TEMP/////
     [self.pickerLanguage selectDefaultLanguageRow:NO];
     self.selectedLanguageCode = kLanguageRussian;
-    self.navigationItem.title = [LANGUAGE_MANAGER localizedLanguageNameForLanguageCode:self.selectedLanguageCode];
+    self.navigationItem.title = [[LANGUAGE_MANAGER localizedLanguageNameForLanguageCode:self.selectedLanguageCode] capitalizedString];
     
     
     self.viewMode = self.segCtrlViewModeSelection.selectedSegmentIndex;
@@ -100,7 +100,7 @@ typedef NS_ENUM(NSInteger, ViewMode) {
         }
         self.letters = [self.words allKeys];
         [self.tableView reloadData];
-        self.navigationItem.title = [LANGUAGE_MANAGER localizedLanguageNameForLanguageCode:self.selectedLanguageCode];
+        self.navigationItem.title = [[LANGUAGE_MANAGER localizedLanguageNameForLanguageCode:self.selectedLanguageCode] capitalizedString];
         //////////////
     }
     
@@ -124,7 +124,7 @@ typedef NS_ENUM(NSInteger, ViewMode) {
     }
     self.letters = [self.words allKeys];
     [self.tableView reloadData];
-    self.navigationItem.title = [LANGUAGE_MANAGER localizedLanguageNameForLanguageCode:self.selectedLanguageCode];
+    self.navigationItem.title = [[LANGUAGE_MANAGER localizedLanguageNameForLanguageCode:self.selectedLanguageCode] capitalizedString];
     //////////////
 }
 
