@@ -37,7 +37,7 @@ static NSString *const kPlistKeyMeaning = @"meaning";
                             Word *wordEntity = [Word MR_createEntityInContext:localContext];
                             wordEntity.language = languageCode;
                             wordEntity.word = word;
-                            wordEntity.meaning = meaning;
+                            wordEntity.meaning = [meaning stringByReplacingOccurrencesOfString:@"\\n" withString:@"\n"];
                             wordEntity.firstLetter = [word substringToIndex:1];
                             wordEntity.lastLetter = [PWGAlphabets lastLetterForWord:word withLanguageCode:languageCode];
                         }
