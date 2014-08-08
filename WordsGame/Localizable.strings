@@ -11,3 +11,6 @@
 
 //Game Setup VC
 "GSVC LABEL Words count" = "Words in dictionary: %li";
+
+//Edit Dictionary VC
+"EDVC ALERT BUTTON CANCEL show word definition" = "Ok";

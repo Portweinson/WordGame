@@ -246,7 +246,7 @@ typedef NS_ENUM(NSInteger, ViewMode) {
 - (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
 {
     Word *word = [self wordForIndexPath:indexPath];
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[word.word capitalizedString] message:word.meaning delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[word.word capitalizedString] message:word.meaning delegate:nil cancelButtonTitle:NSLocalizedString(@"EDVC ALERT BUTTON CANCEL show word definition", nil) otherButtonTitles:nil];
     [alert show];
 }
 

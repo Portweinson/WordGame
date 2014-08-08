@@ -8,7 +8,7 @@
 
 #import "PWGAddWordViewController.h"
 
-@interface PWGAddWordViewController ()
+@interface PWGAddWordViewController () <UITextFieldDelegate, UITextViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *textFieldWord;
 @property (weak, nonatomic) IBOutlet UITextView *textViewDefinition;
@@ -26,6 +26,7 @@
 {
     [super viewDidLoad];
     [self decorateTextView];
+    [self.textFieldWord becomeFirstResponder];
 	// Do any additional setup after loading the view.
 }
 
