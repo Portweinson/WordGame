@@ -10,6 +10,14 @@
 #import "PWGAlphabets.h"
 #import "Word.h"
 
+static NSString *const kWordLanguage = @"language";
+static NSString *const kWordSpelling = @"spelling";
+
+#define PREDICATE_LANGUAGE(languageCode) [NSPredicate predicateWithFormat:@"language = %@", (languageCode)]
+#define PREDICATE_ADDED_BY(addedByUser) [NSPredicate predicateWithFormat:@"addedByUser = %@", (addedByUser)]
+#define PREDICATE_FIRST_LETTER(firstLetter) [NSPredicate predicateWithFormat:@"firstLetter = %@", (firstLetter)]
+#define PREDICATE_SPELLING(spelling) [NSPredicate predicateWithFormat:@"spelling = %@", (spelling)]
+
 
 @implementation PWGWordsManager
 
@@ -18,8 +26,7 @@
 
 - (NSUInteger)wordsCountForLanguageCode:(NSString *)languageCode
 {
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"language = %@", languageCode];
-    return [Word MR_countOfEntitiesWithPredicate:predicate];
+    return [Word MR_countOfEntitiesWithPredicate:PREDICATE_LANGUAGE(languageCode)];
 }
 
 
@@ -27,19 +34,14 @@
 
 - (NSDictionary *)wordsSectionedByFirstLetterForLanguage:(NSString *)languageCode
 {
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"language = %@", languageCode];
-    
-    return [self wordsSectionedByFirstLetterWithPredicate:predicate forLanguage:languageCode];
+    return [self wordsSectionedByFirstLetterWithPredicate:PREDICATE_LANGUAGE(languageCode)
+                                              forLanguage:languageCode];
 }
 
 - (NSDictionary *)wordsSectionedByFirstLetterForLanguage:(NSString *)languageCode addedByUser:(BOOL)addedByUser
 {
-    NSPredicate *langPredicate = [NSPredicate predicateWithFormat:@"language = %@", languageCode];
-    NSPredicate *userPredicate = [NSPredicate predicateWithFormat:@"addedByUser = %@", [NSNumber numberWithBool:addedByUser]];
-    
-    NSPredicate *predicate = [NSCompoundPredicate andPredicateWithSubpredicates:@[langPredicate,
-                                                                                  userPredicate]];
-    
+    NSPredicate *predicate = [NSCompoundPredicate andPredicateWithSubpredicates:@[PREDICATE_LANGUAGE(languageCode),
+                                                                                  PREDICATE_ADDED_BY(@(addedByUser))]];
     return [self wordsSectionedByFirstLetterWithPredicate:predicate forLanguage:languageCode];
 }
 
@@ -49,10 +51,9 @@
     NSArray *alphabet = [PWGAlphabets alphabetForLanguageWithCode:languageCode];
     
     for (NSString *letter in alphabet) {
-        NSPredicate *letterPredicate = [NSPredicate predicateWithFormat:@"firstLetter = %@", [letter lowercaseString]];
         NSPredicate *finalPredicate = [NSCompoundPredicate andPredicateWithSubpredicates:@[predicate,
-                                                                                           letterPredicate]];
-        NSArray *words = [Word MR_findAllSortedBy:@"spelling" ascending:YES withPredicate:finalPredicate];
+                                                                                           PREDICATE_FIRST_LETTER([letter lowercaseString])]];
+        NSArray *words = [Word MR_findAllSortedBy:kWordSpelling ascending:YES withPredicate:finalPredicate];
         if ([words count]) {
             if (!wordsDict) {
                 wordsDict = [NSMutableDictionary dictionaryWithCapacity:[alphabet count]];
@@ -64,11 +65,45 @@
 }
 
 
-#pragma mark -
+#pragma mark - Save/Delete methods
 
-- (void)saveWordEntity:(Word *)word word:(NSString *)wordText definition:(NSString *)definition language:(NSString *)languageCode completion:(void(^)(BOOL success, Word *savedWord))completion
+- (void)saveWord:(Word *)word spelling:(NSString *)spelling definition:(NSString *)definition language:(NSString *)languageCode completion:(void(^)(BOOL success, Word *savedWord))completion
 {
-    
+    [MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext) {
+        Word *wordForSave;
+        if (word) {
+            wordForSave = [word MR_inContext:localContext];
+        } else {
+            wordForSave = [Word MR_createEntityInContext:localContext];
+            wordForSave.language = languageCode;
+            wordForSave.addedByUser = @YES;
+        }
+        wordForSave.spelling = spelling;
+        wordForSave.definition = definition;
+        wordForSave.firstLetter = [spelling substringToIndex:1];
+        wordForSave.lastLetter = [PWGAlphabets lastLetterForWord:spelling withLanguageCode:languageCode];
+    } completion:^(BOOL success, NSError *error) {
+        if (success) {
+            NSPredicate *predicate = [NSCompoundPredicate andPredicateWithSubpredicates:@[PREDICATE_LANGUAGE(languageCode),
+                                                                                          PREDICATE_SPELLING(spelling)]];
+            Word *savedWord = [Word MR_findFirstWithPredicate:predicate];
+            completion(success, savedWord);
+        }
+    }];
+}
+
+- (void)deleteWord:(Word *)word completion:(void(^)(BOOL success, NSError *error))completion
+{
+    [MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext) {
+        [word MR_deleteEntityInContext:localContext];
+    } completion:^(BOOL success, NSError *error) {
+        if (success) {
+            NSLog(@"\nWordManager deleted word successfully\n\n");
+        } else if (error) {
+            NSLog(@"\nWordManager failed to delete word with error:%@\n\n", [error localizedDescription]);
+        }
+        completion(success, error);
+    }];
 }
 
 @end

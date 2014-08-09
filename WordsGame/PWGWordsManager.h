@@ -17,4 +17,7 @@
 - (NSDictionary *)wordsSectionedByFirstLetterForLanguage:(NSString *)languageCode;
 - (NSDictionary *)wordsSectionedByFirstLetterForLanguage:(NSString *)languageCode addedByUser:(BOOL)addedByUser;
 
+- (void)saveWord:(Word *)word spelling:(NSString *)spelling definition:(NSString *)definition language:(NSString *)languageCode completion:(void(^)(BOOL success, Word *savedWord))completion;
+- (void)deleteWord:(Word *)word completion:(void(^)(BOOL success, NSError *error))completion;
+
 @end
