@@ -26,8 +26,26 @@
 {
     [super viewDidLoad];
     [self decorateTextView];
+    [self changeDoneButtonStateIfNeeded];
     [self.textFieldWord becomeFirstResponder];
-	// Do any additional setup after loading the view.
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(textFieldTextChanged:)
+                                                 name:UITextFieldTextDidChangeNotification
+                                               object:self.textFieldWord];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:UITextFieldTextDidChangeNotification
+                                                  object:self.textFieldWord];
 }
 
 - (void)didReceiveMemoryWarning
@@ -47,6 +65,14 @@
 }
 
 
+#pragma mark -
+
+- (void)changeDoneButtonStateIfNeeded
+{
+    self.buttonDone.enabled = [self.textFieldWord.text length];
+}
+
+
 #pragma mark - Actions
 
 - (IBAction)doneButtonPressed:(UIButton *)sender
@@ -61,6 +87,11 @@
 
 
 #pragma mark - UITextFieldDelegate
+
+- (void)textFieldTextChanged:(id)notification
+{
+    [self changeDoneButtonStateIfNeeded];
+}
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {

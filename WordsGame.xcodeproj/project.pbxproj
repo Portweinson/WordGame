@@ -62,11 +62,11 @@
 		84633BC41992BD94002D9F52 /* PWGGamesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84633BC31992BD94002D9F52 /* PWGGamesManager.m */; };
 		84633BC91992C743002D9F52 /* PWGGameSetupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84633BC81992C743002D9F52 /* PWGGameSetupViewController.m */; };
 		8474B93619941D46008E9F3D /* EditDictionaryScreen.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8474B93519941D46008E9F3D /* EditDictionaryScreen.xcassets */; };
+		8494C8B81995AB0600B0087C /* Word.m in Sources */ = {isa = PBXBuildFile; fileRef = 8494C8B71995AB0600B0087C /* Word.m */; };
 		8498770019937867005525A3 /* Game+Extended.m in Sources */ = {isa = PBXBuildFile; fileRef = 849876FF19937866005525A3 /* Game+Extended.m */; };
 		8499A08D1992F05100041FE0 /* PWGWordsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8499A08C1992F05100041FE0 /* PWGWordsManager.m */; };
 		84CB7D111993B942009FF196 /* PWGLanguageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CB7D101993B942009FF196 /* PWGLanguageManager.m */; };
 		84CB7D151993BE7E009FF196 /* PWGLanguagePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CB7D141993BE7E009FF196 /* PWGLanguagePickerView.m */; };
-		84E311F61993E2A60058E229 /* Word.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E311F51993E2A60058E229 /* Word.m */; };
 		84E311F81993ED190058E229 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84E311F71993ED190058E229 /* QuartzCore.framework */; };
 		84E311FB1993FB750058E229 /* PWGAddWordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E311FA1993FB750058E229 /* PWGAddWordViewController.m */; };
 /* End PBXBuildFile section */
@@ -186,6 +186,8 @@
 		84633BC81992C743002D9F52 /* PWGGameSetupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWGGameSetupViewController.m; sourceTree = "<group>"; };
 		8474B93519941D46008E9F3D /* EditDictionaryScreen.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = EditDictionaryScreen.xcassets; sourceTree = "<group>"; };
 		8474B93719943551008E9F3D /* PWGCommonMacroses.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWGCommonMacroses.h; sourceTree = "<group>"; };
+		8494C8B61995AB0600B0087C /* Word.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Word.h; sourceTree = "<group>"; };
+		8494C8B71995AB0600B0087C /* Word.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Word.m; sourceTree = "<group>"; };
 		849876FE19937866005525A3 /* Game+Extended.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Game+Extended.h"; sourceTree = "<group>"; };
 		849876FF19937866005525A3 /* Game+Extended.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Game+Extended.m"; sourceTree = "<group>"; };
 		8499A08B1992F05100041FE0 /* PWGWordsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWGWordsManager.h; sourceTree = "<group>"; };
@@ -194,8 +196,6 @@
 		84CB7D101993B942009FF196 /* PWGLanguageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWGLanguageManager.m; sourceTree = "<group>"; };
 		84CB7D131993BE7E009FF196 /* PWGLanguagePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWGLanguagePickerView.h; sourceTree = "<group>"; };
 		84CB7D141993BE7E009FF196 /* PWGLanguagePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWGLanguagePickerView.m; sourceTree = "<group>"; };
-		84E311F41993E2A60058E229 /* Word.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Word.h; sourceTree = "<group>"; };
-		84E311F51993E2A60058E229 /* Word.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Word.m; sourceTree = "<group>"; };
 		84E311F71993ED190058E229 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		84E311F91993FB750058E229 /* PWGAddWordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWGAddWordViewController.h; sourceTree = "<group>"; };
 		84E311FA1993FB750058E229 /* PWGAddWordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWGAddWordViewController.m; sourceTree = "<group>"; };
@@ -358,8 +358,8 @@
 		8436F19E19917826004F7241 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				84E311F41993E2A60058E229 /* Word.h */,
-				84E311F51993E2A60058E229 /* Word.m */,
+				8494C8B61995AB0600B0087C /* Word.h */,
+				8494C8B71995AB0600B0087C /* Word.m */,
 				84633BB8199278C7002D9F52 /* Game.h */,
 				84633BB9199278C7002D9F52 /* Game.m */,
 				849876FE19937866005525A3 /* Game+Extended.h */,
@@ -673,10 +673,10 @@
 				8428B1121993A9F700AB7E34 /* PWGEditDictViewController.m in Sources */,
 				8436F1A2199178B5004F7241 /* WordsGame.xcdatamodeld in Sources */,
 				8428B10F1993A28800AB7E34 /* PWGGameViewController.m in Sources */,
-				84E311F61993E2A60058E229 /* Word.m in Sources */,
 				8436F22219919B62004F7241 /* NSPersistentStoreCoordinator+MagicalRecord.m in Sources */,
 				84633BC019928B53002D9F52 /* PWGAlphabets.m in Sources */,
 				8436F21519919B62004F7241 /* NSRelationshipDescription+MagicalDataImport.m in Sources */,
+				8494C8B81995AB0600B0087C /* Word.m in Sources */,
 				84633BC91992C743002D9F52 /* PWGGameSetupViewController.m in Sources */,
 				8436F21419919B62004F7241 /* NSObject+MagicalDataImport.m in Sources */,
 				84CB7D151993BE7E009FF196 /* PWGLanguagePickerView.m in Sources */,

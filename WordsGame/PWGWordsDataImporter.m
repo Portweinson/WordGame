@@ -12,8 +12,8 @@
 
 static NSString *const kPlistNameSuffix = @"Words";
 
-static NSString *const kPlistKeyWord = @"word";
-static NSString *const kPlistKeyMeaning = @"meaning";
+static NSString *const kPlistKeySpelling = @"spelling";
+static NSString *const kPlistKeyDefinition = @"definition";
 
 @implementation PWGWordsDataImporter
 
@@ -31,15 +31,15 @@ static NSString *const kPlistKeyMeaning = @"meaning";
                     NSArray *words = [plistData objectForKey:key];
                     if ([words count]) {
                         for (NSDictionary *wordInfo in words) {
-                            NSString *word = [wordInfo objectForKey:kPlistKeyWord];
-                            NSString *meaning = [wordInfo objectForKey:kPlistKeyMeaning];
+                            NSString *spelling = [wordInfo objectForKey:kPlistKeySpelling];
+                            NSString *definition = [wordInfo objectForKey:kPlistKeyDefinition];
                             
-                            Word *wordEntity = [Word MR_createEntityInContext:localContext];
-                            wordEntity.language = languageCode;
-                            wordEntity.word = word;
-                            wordEntity.meaning = [meaning stringByReplacingOccurrencesOfString:@"\\n" withString:@"\n"];
-                            wordEntity.firstLetter = [word substringToIndex:1];
-                            wordEntity.lastLetter = [PWGAlphabets lastLetterForWord:word withLanguageCode:languageCode];
+                            Word *word = [Word MR_createEntityInContext:localContext];
+                            word.language = languageCode;
+                            word.spelling = spelling;
+                            word.definition = [definition stringByReplacingOccurrencesOfString:@"\\n" withString:@"\n"];
+                            word.firstLetter = [spelling substringToIndex:1];
+                            word.lastLetter = [PWGAlphabets lastLetterForWord:spelling withLanguageCode:languageCode];
                         }
                     }
                 }

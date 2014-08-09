@@ -211,7 +211,7 @@ typedef NS_ENUM(NSInteger, ViewMode) {
     } else {
         cell = [self.tableView dequeueReusableCellWithIdentifier:kCellIDStandardWord];
     }
-    cell.textLabel.text = word.word;
+    cell.textLabel.text = word.spelling;
     
     NSUInteger useCount = [word.useCount integerValue];
     cell.detailTextLabel.text = (useCount > 0) ? [NSString stringWithFormat:@"%li", [word.useCount integerValue]] : @"";
@@ -222,7 +222,7 @@ typedef NS_ENUM(NSInteger, ViewMode) {
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     Word *word = [self wordForIndexPath:indexPath];
-    BOOL showNoDefinitionIcon = ![word.meaning length] && [word.addedByUser boolValue];
+    BOOL showNoDefinitionIcon = ![word.definition length] && [word.addedByUser boolValue];
     
     cell.imageView.image = (showNoDefinitionIcon) ? [UIImage imageNamed:@"question mark icon"] : nil;
 }
@@ -246,7 +246,7 @@ typedef NS_ENUM(NSInteger, ViewMode) {
 - (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
 {
     Word *word = [self wordForIndexPath:indexPath];
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[word.word capitalizedString] message:word.meaning delegate:nil cancelButtonTitle:NSLocalizedString(@"EDVC ALERT BUTTON CANCEL show word definition", nil) otherButtonTitles:nil];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[word.spelling capitalizedString] message:word.definition delegate:nil cancelButtonTitle:NSLocalizedString(@"EDVC ALERT BUTTON CANCEL show word definition", nil) otherButtonTitles:nil];
     [alert show];
 }
 

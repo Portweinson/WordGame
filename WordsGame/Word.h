@@ -2,7 +2,7 @@
 //  Word.h
 //  WordsGame
 //
-//  Created by Vjacheslav Embaturov on 07.08.14.
+//  Created by Vjacheslav Embaturov on 09.08.14.
 //  Copyright (c) 2014 Portweinson. All rights reserved.
 //
 
@@ -17,9 +17,10 @@
 @property (nonatomic, retain) NSString * firstLetter;
 @property (nonatomic, retain) NSString * language;
 @property (nonatomic, retain) NSString * lastLetter;
-@property (nonatomic, retain) NSString * meaning;
+@property (nonatomic, retain) NSString * definition;
 @property (nonatomic, retain) NSNumber * useCount;
-@property (nonatomic, retain) NSString * word;
+@property (nonatomic, retain) NSString * spelling;
+@property (nonatomic, retain) NSString * alternateSpelling;
 @property (nonatomic, retain) NSSet *games;
 @end
 

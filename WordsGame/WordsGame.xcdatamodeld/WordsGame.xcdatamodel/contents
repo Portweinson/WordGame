@@ -10,16 +10,17 @@
     </entity>
     <entity name="Word" representedClassName="Word" syncable="YES">
         <attribute name="addedByUser" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="alternateSpelling" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="definition" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="firstLetter" optional="YES" attributeType="String" minValueString="0" maxValueString="1" indexed="YES" syncable="YES"/>
         <attribute name="language" optional="YES" attributeType="String" minValueString="2" maxValueString="3" indexed="YES" syncable="YES"/>
         <attribute name="lastLetter" optional="YES" attributeType="String" minValueString="0" maxValueString="1" indexed="YES" syncable="YES"/>
-        <attribute name="meaning" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="spelling" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="useCount" attributeType="Integer 32" minValueString="0" defaultValueString="0" syncable="YES"/>
-        <attribute name="word" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="games" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Game" inverseName="usedWords" inverseEntity="Game" syncable="YES"/>
     </entity>
     <elements>
         <element name="Game" positionX="288" positionY="-76" width="128" height="133"/>
-        <element name="Word" positionX="484" positionY="-153" width="128" height="163"/>
+        <element name="Word" positionX="484" positionY="-153" width="128" height="178"/>
     </elements>
 </model>

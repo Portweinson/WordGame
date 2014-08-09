@@ -52,7 +52,7 @@
         NSPredicate *letterPredicate = [NSPredicate predicateWithFormat:@"firstLetter = %@", [letter lowercaseString]];
         NSPredicate *finalPredicate = [NSCompoundPredicate andPredicateWithSubpredicates:@[predicate,
                                                                                            letterPredicate]];
-        NSArray *words = [Word MR_findAllSortedBy:@"word" ascending:YES withPredicate:finalPredicate];
+        NSArray *words = [Word MR_findAllSortedBy:@"spelling" ascending:YES withPredicate:finalPredicate];
         if ([words count]) {
             if (!wordsDict) {
                 wordsDict = [NSMutableDictionary dictionaryWithCapacity:[alphabet count]];
@@ -63,5 +63,12 @@
     return wordsDict;
 }
 
+
+#pragma mark -
+
+- (void)saveWordEntity:(Word *)word word:(NSString *)wordText definition:(NSString *)definition language:(NSString *)languageCode completion:(void(^)(BOOL success, Word *savedWord))completion
+{
+    
+}
 
 @end
