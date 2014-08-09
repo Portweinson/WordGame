@@ -8,6 +8,7 @@
 
 #import "PWGAddWordViewController.h"
 #import "PWGWordsManager.h"
+#import "PWGAlphabets.h"
 #import "Word.h"
 
 @interface PWGAddWordViewController () <UITextFieldDelegate, UITextViewDelegate>
@@ -16,6 +17,8 @@
 @property (weak, nonatomic) IBOutlet UITextView *textViewDefinition;
 @property (weak, nonatomic) IBOutlet UIButton *buttonCancel;
 @property (weak, nonatomic) IBOutlet UIButton *buttonDone;
+
+@property (strong, nonatomic) NSCharacterSet *restrictedCharacters;
 
 @end
 
@@ -78,6 +81,17 @@
 }
 
 
+#pragma mark - Custom getters/setters
+
+- (NSCharacterSet *)restrictedCharacters
+{
+    if (! _restrictedCharacters) {
+        _restrictedCharacters = [[PWGAlphabets allowedWordCharactersForLanguage:self.language] invertedSet];
+    }
+    return _restrictedCharacters;
+}
+
+
 #pragma mark -
 
 - (void)changeDoneButtonStateIfNeeded
@@ -123,7 +137,15 @@
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
-    return YES;
+    BOOL shouldChange = NO;
+    
+    shouldChange = ([string rangeOfCharacterFromSet:self.restrictedCharacters].location == NSNotFound) ? YES : NO;
+    if (range.location == 0) {
+        NSCharacterSet *restrictedFirstLettersSet = [PWGAlphabets restrictedFirstLetterCharactersForLanguage:self.language];
+        shouldChange = ([string rangeOfCharacterFromSet:restrictedFirstLettersSet].location == NSNotFound) ? shouldChange : NO;
+    }
+    
+    return shouldChange;
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField
