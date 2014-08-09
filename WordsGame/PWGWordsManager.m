@@ -48,7 +48,7 @@ static NSString *const kWordSpelling = @"spelling";
 - (NSDictionary *)wordsSectionedByFirstLetterWithPredicate:(NSPredicate *)predicate forLanguage:(NSString *)languageCode
 {
     NSMutableDictionary *wordsDict;
-    NSArray *alphabet = [PWGAlphabets alphabetForLanguageWithCode:languageCode];
+    NSArray *alphabet = [PWGAlphabets alphabetForLanguage:languageCode];
     
     for (NSString *letter in alphabet) {
         NSPredicate *finalPredicate = [NSCompoundPredicate andPredicateWithSubpredicates:@[predicate,
@@ -81,13 +81,16 @@ static NSString *const kWordSpelling = @"spelling";
         wordForSave.spelling = spelling;
         wordForSave.definition = definition;
         wordForSave.firstLetter = [spelling substringToIndex:1];
-        wordForSave.lastLetter = [PWGAlphabets lastLetterForWord:spelling withLanguageCode:languageCode];
+        wordForSave.lastLetter = [PWGAlphabets lastLetterForWord:spelling withLanguage:languageCode];
     } completion:^(BOOL success, NSError *error) {
         if (success) {
+            NSLog(@"\nWordManager saved word successfully\n\n");
             NSPredicate *predicate = [NSCompoundPredicate andPredicateWithSubpredicates:@[PREDICATE_LANGUAGE(languageCode),
                                                                                           PREDICATE_SPELLING(spelling)]];
             Word *savedWord = [Word MR_findFirstWithPredicate:predicate];
             completion(success, savedWord);
+        } else if (error) {
+            NSLog(@"\nWordManager failed to save word with error:%@\n\n", [error localizedDescription]);
         }
     }];
 }

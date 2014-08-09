@@ -263,7 +263,7 @@ typedef NS_ENUM(NSInteger, ViewMode) {
 
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
 {
-    return [PWGAlphabets alphabetForLanguageWithCode:self.selectedLanguageCode];
+    return [PWGAlphabets alphabetForLanguage:self.selectedLanguageCode];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index

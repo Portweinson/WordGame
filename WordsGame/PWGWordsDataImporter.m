@@ -42,7 +42,7 @@ static NSString *const kPlistKeyDefinition = @"definition";
                             word.alternateSpelling = alternateSpelling;
                             word.definition = [definition stringByReplacingOccurrencesOfString:@"\\n" withString:@"\n"];
                             word.firstLetter = [spelling substringToIndex:1];
-                            word.lastLetter = [PWGAlphabets lastLetterForWord:spelling withLanguageCode:languageCode];
+                            word.lastLetter = [PWGAlphabets lastLetterForWord:spelling withLanguage:languageCode];
                         }
                     }
                 }
