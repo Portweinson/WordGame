@@ -13,6 +13,7 @@
 static NSString *const kPlistNameSuffix = @"Words";
 
 static NSString *const kPlistKeySpelling = @"spelling";
+static NSString *const kPlistKeyAlternateSpelling = @"alternate spelling";
 static NSString *const kPlistKeyDefinition = @"definition";
 
 @implementation PWGWordsDataImporter
@@ -33,10 +34,12 @@ static NSString *const kPlistKeyDefinition = @"definition";
                         for (NSDictionary *wordInfo in words) {
                             NSString *spelling = [wordInfo objectForKey:kPlistKeySpelling];
                             NSString *definition = [wordInfo objectForKey:kPlistKeyDefinition];
+                            NSString *alternateSpelling = [wordInfo objectForKey:kPlistKeyAlternateSpelling];
                             
                             Word *word = [Word MR_createEntityInContext:localContext];
                             word.language = languageCode;
                             word.spelling = spelling;
+                            word.alternateSpelling = alternateSpelling;
                             word.definition = [definition stringByReplacingOccurrencesOfString:@"\\n" withString:@"\n"];
                             word.firstLetter = [spelling substringToIndex:1];
                             word.lastLetter = [PWGAlphabets lastLetterForWord:spelling withLanguageCode:languageCode];
@@ -44,7 +47,11 @@ static NSString *const kPlistKeyDefinition = @"definition";
                     }
                 }
             } completion:^(BOOL success, NSError *error) {
-                
+                if (success) {
+                    NSLog(@"\nDataImporter finished pList import for Language: %@\n\n", languageCode);
+                } else if (error) {
+                    NSLog(@"\nDataImporter failed pList import for Language: %@\nwith error:%@\n\n", languageCode, [error localizedDescription]);
+                }
             }];
         }
     }
