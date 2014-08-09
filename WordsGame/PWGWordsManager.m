@@ -12,11 +12,14 @@
 
 static NSString *const kWordLanguage = @"language";
 static NSString *const kWordSpelling = @"spelling";
+static NSString *const kWordAlternateSpelling = @"alternateSpelling";
+static NSString *const kWordAddedByUser = @"addedByUser";
 
 #define PREDICATE_LANGUAGE(languageCode) [NSPredicate predicateWithFormat:@"language = %@", (languageCode)]
 #define PREDICATE_ADDED_BY(addedByUser) [NSPredicate predicateWithFormat:@"addedByUser = %@", (addedByUser)]
 #define PREDICATE_FIRST_LETTER(firstLetter) [NSPredicate predicateWithFormat:@"firstLetter = %@", (firstLetter)]
 #define PREDICATE_SPELLING(spelling) [NSPredicate predicateWithFormat:@"spelling = %@", (spelling)]
+#define PREDICATE_ALT_SPELLING(alternateSpelling) [NSPredicate predicateWithFormat:@"alternateSpelling = %@", (alternateSpelling)]
 
 
 @implementation PWGWordsManager
@@ -29,8 +32,17 @@ static NSString *const kWordSpelling = @"spelling";
     return [Word MR_countOfEntitiesWithPredicate:PREDICATE_LANGUAGE(languageCode)];
 }
 
+- (BOOL)wordSpelled:(NSString *)spelling existForLanguage:(NSString *)language
+{
+    NSPredicate *spellingPredicate = [NSCompoundPredicate orPredicateWithSubpredicates:@[PREDICATE_SPELLING(spelling),
+                                                                                         PREDICATE_ALT_SPELLING(spelling)]];
+    NSPredicate *predicate = [NSCompoundPredicate andPredicateWithSubpredicates:@[spellingPredicate,
+                                                                                  PREDICATE_LANGUAGE(language)]];
+    return [[Word MR_numberOfEntitiesWithPredicate:predicate] boolValue];
+}
 
-#pragma mark -
+
+#pragma mark - Words collection methods
 
 - (NSDictionary *)wordsSectionedByFirstLetterForLanguage:(NSString *)languageCode
 {
@@ -85,6 +97,7 @@ static NSString *const kWordSpelling = @"spelling";
     } completion:^(BOOL success, NSError *error) {
         if (success) {
             NSLog(@"\nWordManager saved word successfully\n\n");
+            
             NSPredicate *predicate = [NSCompoundPredicate andPredicateWithSubpredicates:@[PREDICATE_LANGUAGE(languageCode),
                                                                                           PREDICATE_SPELLING(spelling)]];
             Word *savedWord = [Word MR_findFirstWithPredicate:predicate];

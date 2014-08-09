@@ -104,16 +104,31 @@
 
 - (IBAction)doneButtonPressed:(UIButton *)sender
 {
-    /////TEMP/////
-    [WORDS_MANAGER saveWord:self.word spelling:[self.textFieldWord.text lowercaseString] definition:self.textViewDefinition.text language:self.language completion:^(BOOL success, Word*savedWord) {
-        if (success) {
-            if (self.delegate && [self.delegate respondsToSelector:@selector(wordAdded:)]) {
-                [self.delegate wordAdded:savedWord];
+    NSString *spelling = [self.textFieldWord.text lowercaseString];
+    BOOL saveAllowed = YES;
+    
+    if (!self.word || ![self.word.spelling isEqualToString:spelling]) {
+        saveAllowed = ! [WORDS_MANAGER wordSpelled:spelling existForLanguage:self.language];
+    }
+
+    if (saveAllowed) {
+        [WORDS_MANAGER saveWord:self.word spelling:spelling definition:self.textViewDefinition.text language:self.language completion:^(BOOL success, Word*savedWord) {
+            if (success) {
+                if (self.delegate && [self.delegate respondsToSelector:@selector(wordAdded:)]) {
+                    [self.delegate wordAdded:savedWord];
+                }
+                [self.presentingViewController dismissViewControllerAnimated:YES completion:^{}];
             }
-            [self.presentingViewController dismissViewControllerAnimated:YES completion:^{}];
-        }
-    }];
-    //////////////
+        }];
+    } else {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:NSLocalizedString(@"AWVC ALERT TITLE word exist", nil), spelling]
+                                                        message:NSLocalizedString(@"AWVC ALERT MESSAGE word exist", nil)
+                                                       delegate:nil
+                                              cancelButtonTitle:NSLocalizedString(@"AWVC ALERT BUTTON CANCEL word exist", nil)
+                                              otherButtonTitles:nil];
+        [alert show];
+    }
+
 }
 
 - (IBAction)cancelButtonPressed:(UIButton *)sender

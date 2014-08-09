@@ -14,3 +14,8 @@
 
 //Edit Dictionary VC
 "EDVC ALERT BUTTON CANCEL show word definition" = "Ok";
+
+//Add Word VC
+"AWVC ALERT TITLE word exist" = "%@ exist in dictionary";
+"AWVC ALERT MESSAGE word exist" = "Please, add other word.";
+"AWVC ALERT BUTTON CANCEL word exist" = "Dismiss";

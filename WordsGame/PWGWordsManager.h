@@ -13,6 +13,7 @@
 @interface PWGWordsManager : NSObject
 
 - (NSUInteger)wordsCountForLanguageCode:(NSString *)languageCode;
+- (BOOL)wordSpelled:(NSString *)spelling existForLanguage:(NSString *)language;
 
 - (NSDictionary *)wordsSectionedByFirstLetterForLanguage:(NSString *)languageCode;
 - (NSDictionary *)wordsSectionedByFirstLetterForLanguage:(NSString *)languageCode addedByUser:(BOOL)addedByUser;
