@@ -12,7 +12,9 @@
 
 #pragma mark - Class methods
 
-+ (NSArray *)alphabetForLanguageWithCode:(NSString *)languageCode;
-+ (NSString *)lastLetterForWord:(NSString *)word withLanguageCode:(NSString *)languageCode;
++ (NSArray *)alphabetForLanguage:(NSString *)languageCode;
++ (NSCharacterSet *)allowedWordCharactersForLanguage:(NSString *)languageCode;
++ (NSCharacterSet *)restrictedFirstLetterCharactersForLanguage:(NSString *)languageCode;
++ (NSString *)lastLetterForWord:(NSString *)word withLanguage:(NSString *)languageCode;
 
 @end

@@ -10,7 +10,7 @@
 
 @implementation PWGAlphabets
 
-+ (NSArray *)alphabetForLanguageWithCode:(NSString *)languageCode
++ (NSArray *)alphabetForLanguage:(NSString *)languageCode
 {
     NSArray *alphabet;
     
@@ -22,10 +22,34 @@
     return alphabet;
 }
 
-+ (NSString *)lastLetterForWord:(NSString *)word withLanguageCode:(NSString *)languageCode
++ (NSCharacterSet *)allowedWordCharactersForLanguage:(NSString *)languageCode
+{
+    NSCharacterSet *allowedCharacters;
+    
+    if ([languageCode isEqualToString:kLanguageRussian]) {
+        allowedCharacters = [NSCharacterSet characterSetWithCharactersInString:@"АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯабвгдеёжзийклмнопрстуфхцчшщъыьэюя"];
+    } else if ([languageCode isEqualToString:kLanguageEnglish]) {
+        allowedCharacters = [NSCharacterSet characterSetWithCharactersInString:@"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"];
+    }
+    return allowedCharacters;
+}
+
++ (NSCharacterSet *)restrictedFirstLetterCharactersForLanguage:(NSString *)languageCode
+{
+    NSCharacterSet *restrictedCharacters;
+    
+    if ([languageCode isEqualToString:kLanguageRussian]) {
+        restrictedCharacters = [NSCharacterSet characterSetWithCharactersInString:@"ЪЫЬъыь"];
+    } else if ([languageCode isEqualToString:kLanguageEnglish]) {
+        restrictedCharacters = [NSCharacterSet characterSetWithCharactersInString:@""];
+    }
+    return restrictedCharacters;
+}
+
++ (NSString *)lastLetterForWord:(NSString *)word withLanguage:(NSString *)languageCode
 {
     NSString *lastLetter;
-    NSArray *alphabet = [self alphabetForLanguageWithCode:languageCode];
+    NSArray *alphabet = [self alphabetForLanguage:languageCode];
     
     for (NSUInteger index = [word length] - 1; index > 0; index--) {
         NSString *character = [word substringWithRange:NSMakeRange(index, 1)];
