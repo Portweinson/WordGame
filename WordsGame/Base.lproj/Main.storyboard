@@ -253,7 +253,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="ebE-g3-wRb">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="ebE-g3-wRb">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="524"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -316,7 +316,7 @@
                                     <outlet property="delegate" destination="IpD-hX-3BY" id="KXb-91-CYW"/>
                                 </connections>
                             </tableView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DuT-6m-sRj">
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DuT-6m-sRj">
                                 <rect key="frame" x="0.0" y="524" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
@@ -341,15 +341,15 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
-                            <view hidden="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gLO-Kc-8JR" userLabel="View fadeUI">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gLO-Kc-8JR" userLabel="View fadeUI">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hEm-eu-zfX" userLabel="View lnguage picker container">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hEm-eu-zfX" userLabel="View lnguage picker container">
                                         <rect key="frame" x="20" y="164" width="280" height="240"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9vX-kx-uqj">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9vX-kx-uqj">
                                                 <rect key="frame" x="20" y="20" width="85" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <constraints>
@@ -362,7 +362,7 @@
                                                     <action selector="cancelLanguageSelectionButtonPressed:" destination="IpD-hX-3BY" eventType="touchUpInside" id="XXN-ab-LhG"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eKm-M4-cpb">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eKm-M4-cpb">
                                                 <rect key="frame" x="175" y="20" width="85" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <constraints>
@@ -375,16 +375,31 @@
                                                     <action selector="doneLanguageSelectionButtonPressed:" destination="IpD-hX-3BY" eventType="touchUpInside" id="K4R-lX-2f4"/>
                                                 </connections>
                                             </button>
-                                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5W0-kO-tXL" customClass="PWGLanguagePickerView">
+                                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5W0-kO-tXL" customClass="PWGLanguagePickerView">
                                                 <rect key="frame" x="0.0" y="58" width="280" height="162"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                             </pickerView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="5W0-kO-tXL" secondAttribute="bottom" constant="20" symbolic="YES" id="08s-Cy-YLX"/>
+                                            <constraint firstItem="5W0-kO-tXL" firstAttribute="top" secondItem="eKm-M4-cpb" secondAttribute="bottom" constant="8" symbolic="YES" id="7M7-Qv-qoi"/>
+                                            <constraint firstItem="eKm-M4-cpb" firstAttribute="leading" secondItem="hEm-eu-zfX" secondAttribute="leading" constant="175" id="7bH-qQ-fN9"/>
+                                            <constraint firstItem="eKm-M4-cpb" firstAttribute="leading" secondItem="9vX-kx-uqj" secondAttribute="trailing" constant="70" id="Fz9-5e-5iL"/>
+                                            <constraint firstAttribute="trailing" secondItem="eKm-M4-cpb" secondAttribute="trailing" constant="20" symbolic="YES" id="Lfa-W9-ure"/>
+                                            <constraint firstAttribute="trailing" secondItem="5W0-kO-tXL" secondAttribute="trailing" id="TkH-dU-3dt"/>
+                                            <constraint firstItem="eKm-M4-cpb" firstAttribute="baseline" secondItem="9vX-kx-uqj" secondAttribute="baseline" id="UFh-V5-uIm"/>
+                                            <constraint firstItem="eKm-M4-cpb" firstAttribute="top" secondItem="hEm-eu-zfX" secondAttribute="top" constant="20" symbolic="YES" id="amW-Ls-0l8"/>
+                                            <constraint firstItem="5W0-kO-tXL" firstAttribute="leading" secondItem="hEm-eu-zfX" secondAttribute="leading" id="yEm-zO-gW7"/>
+                                        </constraints>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.25" colorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstItem="hEm-eu-zfX" firstAttribute="leading" secondItem="gLO-Kc-8JR" secondAttribute="leading" constant="20" symbolic="YES" id="BtC-ew-bJ5"/>
+                                    <constraint firstItem="hEm-eu-zfX" firstAttribute="centerY" secondItem="gLO-Kc-8JR" secondAttribute="centerY" id="cpM-yZ-nrz"/>
+                                </constraints>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="W4O-eq-LgM" appends="YES" id="4V1-Ug-0PL"/>
                                 </connections>
@@ -392,12 +407,14 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="DuT-6m-sRj" secondAttribute="trailing" id="7xW-BK-UkK"/>
                             <constraint firstItem="gLO-Kc-8JR" firstAttribute="leading" secondItem="Cod-qk-KdM" secondAttribute="leading" id="8fA-uz-MeQ"/>
                             <constraint firstItem="gLO-Kc-8JR" firstAttribute="leading" secondItem="DuT-6m-sRj" secondAttribute="leading" id="Arc-Pm-PoE"/>
                             <constraint firstItem="gLO-Kc-8JR" firstAttribute="trailing" secondItem="ebE-g3-wRb" secondAttribute="trailing" id="JJf-ar-ate"/>
                             <constraint firstItem="ebE-g3-wRb" firstAttribute="bottom" secondItem="DuT-6m-sRj" secondAttribute="top" id="YYf-Ic-hCn"/>
                             <constraint firstItem="gLO-Kc-8JR" firstAttribute="bottom" secondItem="DuT-6m-sRj" secondAttribute="bottom" id="a43-tq-iDe"/>
                             <constraint firstItem="gLO-Kc-8JR" firstAttribute="trailing" secondItem="DuT-6m-sRj" secondAttribute="trailing" id="b1H-le-9WC"/>
+                            <constraint firstAttribute="bottom" secondItem="gLO-Kc-8JR" secondAttribute="bottom" id="kGb-Oy-JC7"/>
                             <constraint firstItem="gLO-Kc-8JR" firstAttribute="top" secondItem="Cod-qk-KdM" secondAttribute="top" id="nUG-iw-5Gt"/>
                             <constraint firstItem="gLO-Kc-8JR" firstAttribute="leading" secondItem="ebE-g3-wRb" secondAttribute="leading" id="nyU-1k-8AG"/>
                             <constraint firstItem="gLO-Kc-8JR" firstAttribute="top" secondItem="ebE-g3-wRb" secondAttribute="top" id="uVs-uO-v27"/>
