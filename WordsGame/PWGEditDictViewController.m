@@ -29,6 +29,7 @@ typedef NS_ENUM(NSInteger, ViewMode) {
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIView *viewFadingBackground;
+@property (weak, nonatomic) IBOutlet UIView *viewLanguagePickerContainer;
 @property (weak, nonatomic) IBOutlet PWGLanguagePickerView *pickerLanguage;
 @property (weak, nonatomic) IBOutlet UIButton *buttonLanguageSelectionDone;
 @property (weak, nonatomic) IBOutlet UIButton *buttonLanguageSelectionCancel;
@@ -62,7 +63,7 @@ typedef NS_ENUM(NSInteger, ViewMode) {
     
     
     self.viewMode = self.segCtrlViewModeSelection.selectedSegmentIndex;
-    
+    [self decorateViews];
     [self refreshDataSourceWithCompletion:^(BOOL success, NSError *error) {}];
     //////////////
 }
@@ -71,6 +72,14 @@ typedef NS_ENUM(NSInteger, ViewMode) {
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+
+#pragma mark - View additional setup
+
+- (void)decorateViews
+{
+    self.viewLanguagePickerContainer.layer.cornerRadius = 8.0f;
 }
 
 
