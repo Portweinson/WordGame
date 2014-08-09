@@ -8,6 +8,23 @@
 
 #import "PWGBaseViewController.h"
 
+@class Word;
+
+@protocol PWGAddWordViewControllerDelegate <NSObject>
+
+@optional
+
+- (void)wordAdded:(Word *)word;
+
+@end
+
+
+
 @interface PWGAddWordViewController : PWGBaseViewController
+
+@property (nonatomic, weak) id <PWGAddWordViewControllerDelegate> delegate;
+@property (nonatomic, strong) Word *word;
+@property (nonatomic, strong) NSString *spelling;
+@property (nonatomic, strong) NSString *language;
 
 @end

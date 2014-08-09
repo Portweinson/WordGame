@@ -7,6 +7,7 @@
 //
 
 #import "PWGEditDictViewController.h"
+#import "PWGAddWordViewController.h"
 #import "PWGWordsManager.h"
 #import "PWGLanguageManager.h"
 #import "PWGAlphabets.h"
@@ -24,7 +25,7 @@ typedef NS_ENUM(NSInteger, ViewMode) {
 };
 
 
-@interface PWGEditDictViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface PWGEditDictViewController () <UITableViewDataSource, UITableViewDelegate, PWGAddWordViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIView *viewFadingBackground;
@@ -62,13 +63,7 @@ typedef NS_ENUM(NSInteger, ViewMode) {
     
     self.viewMode = self.segCtrlViewModeSelection.selectedSegmentIndex;
     
-    if (self.viewMode == kViewModeEditable) {
-        self.words = [WORDS_MANAGER wordsSectionedByFirstLetterForLanguage:self.selectedLanguageCode addedByUser:YES];
-    } else {
-        self.words = [WORDS_MANAGER wordsSectionedByFirstLetterForLanguage:self.selectedLanguageCode];
-    }
-    
-    self.letters = [self.words allKeys];
+    [self refreshDataSourceWithCompletion:^(BOOL success, NSError *error) {}];
     //////////////
 }
 
@@ -93,14 +88,10 @@ typedef NS_ENUM(NSInteger, ViewMode) {
     if (! [selectedLanguage isEqualToString:self.selectedLanguageCode]) {
         self.selectedLanguageCode = selectedLanguage;
         /////TEMP/////
-        if (self.viewMode == kViewModeEditable) {
-            self.words = [WORDS_MANAGER wordsSectionedByFirstLetterForLanguage:self.selectedLanguageCode addedByUser:YES];
-        } else {
-            self.words = [WORDS_MANAGER wordsSectionedByFirstLetterForLanguage:self.selectedLanguageCode];
-        }
-        self.letters = [self.words allKeys];
-        [self.tableView reloadData];
-        self.navigationItem.title = [[LANGUAGE_MANAGER localizedLanguageNameForLanguageCode:self.selectedLanguageCode] capitalizedString];
+        [self refreshDataSourceWithCompletion:^(BOOL success, NSError *error) {
+            [self.tableView reloadData];
+            self.navigationItem.title = [[LANGUAGE_MANAGER localizedLanguageNameForLanguageCode:self.selectedLanguageCode] capitalizedString];
+        }];
         //////////////
     }
     
@@ -117,14 +108,10 @@ typedef NS_ENUM(NSInteger, ViewMode) {
     self.viewMode = sender.selectedSegmentIndex;
     
     /////TEMP/////
-    if (self.viewMode == kViewModeEditable) {
-        self.words = [WORDS_MANAGER wordsSectionedByFirstLetterForLanguage:self.selectedLanguageCode addedByUser:YES];
-    } else {
-        self.words = [WORDS_MANAGER wordsSectionedByFirstLetterForLanguage:self.selectedLanguageCode];
-    }
-    self.letters = [self.words allKeys];
-    [self.tableView reloadData];
-    self.navigationItem.title = [[LANGUAGE_MANAGER localizedLanguageNameForLanguageCode:self.selectedLanguageCode] capitalizedString];
+    [self refreshDataSourceWithCompletion:^(BOOL success, NSError *error) {
+        [self.tableView reloadData];
+        self.navigationItem.title = [[LANGUAGE_MANAGER localizedLanguageNameForLanguageCode:self.selectedLanguageCode] capitalizedString];
+    }];
     //////////////
 }
 
@@ -171,7 +158,11 @@ typedef NS_ENUM(NSInteger, ViewMode) {
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:kSegueIDEditDictToAddWord]) {
-        
+        PWGAddWordViewController *controller = (PWGAddWordViewController *)segue.destinationViewController;
+        controller.delegate = self;
+        controller.word = self.selectedWord;
+        controller.language = self.selectedLanguageCode;
+        self.selectedWord = nil;
     }
 }
 
@@ -183,6 +174,20 @@ typedef NS_ENUM(NSInteger, ViewMode) {
     NSString *sectionLetter = [self.letters objectAtIndex:indexPath.section];
     NSArray *sectionWords = [self.words objectForKey:sectionLetter];
     return [sectionWords objectAtIndex:indexPath.row];
+}
+
+- (void)refreshDataSourceWithCompletion:(void(^)(BOOL success, NSError *error))completion
+{
+    if (self.viewMode == kViewModeEditable) {
+        self.words = [WORDS_MANAGER wordsSectionedByFirstLetterForLanguage:self.selectedLanguageCode addedByUser:YES];
+    } else {
+        self.words = [WORDS_MANAGER wordsSectionedByFirstLetterForLanguage:self.selectedLanguageCode];
+    }
+    
+    self.letters = [[self.words allKeys] sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+        return [(NSString *)obj1 localizedCaseInsensitiveCompare:(NSString *)obj2];
+    }];
+    completion(YES, nil);
 }
 
 
@@ -222,9 +227,15 @@ typedef NS_ENUM(NSInteger, ViewMode) {
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     Word *word = [self wordForIndexPath:indexPath];
-    BOOL showNoDefinitionIcon = ![word.definition length] && [word.addedByUser boolValue];
+    BOOL wordWithoutDefinition = ![word.definition length] && [word.addedByUser boolValue];
     
-    cell.imageView.image = (showNoDefinitionIcon) ? [UIImage imageNamed:@"question mark icon"] : nil;
+    if (wordWithoutDefinition) {
+        cell.imageView.image = [UIImage imageNamed:@"question mark icon"];
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    } else {
+        cell.imageView.image = nil;
+        cell.accessoryType = UITableViewCellAccessoryDetailButton;
+    }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -259,6 +270,50 @@ typedef NS_ENUM(NSInteger, ViewMode) {
 {
     return [self.letters indexOfObject:title];
 }
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    Word *word = [self wordForIndexPath:indexPath];
+    return [word.addedByUser boolValue];
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        Word *word = [self wordForIndexPath:indexPath];
+        NSString *sectionLetter = [self.letters objectAtIndex:indexPath.section];
+        NSArray *sectionWords = [self.words objectForKey:sectionLetter];
+        NSUInteger wordsCountInSection = [sectionWords count];
+        
+        [WORDS_MANAGER deleteWord:word completion:^(BOOL success, NSError *error) {
+            if (success) {
+                /////TEMP/////
+                [self refreshDataSourceWithCompletion:^(BOOL success, NSError *error) {
+                    [tableView beginUpdates];
+                    
+                    if (wordsCountInSection > 1) {
+                        [tableView deleteRowsAtIndexPaths:@[indexPath]
+                                         withRowAnimation:UITableViewRowAnimationAutomatic];
+                    } else {
+                        [tableView deleteSections:[NSIndexSet indexSetWithIndex:indexPath.section]
+                                 withRowAnimation:UITableViewRowAnimationAutomatic];
+                    }
+                    
+                    [tableView endUpdates];
+                }];
+                //////////////
+            }
+        }];
+    }
+}
+
+
+#pragma mark - PWGAddWordViewControllerDelegate
+
+- (void)wordAdded:(Word *)word
+{
+    [self refreshDataSourceWithCompletion:^(BOOL success, NSError *error) {
+        [self.tableView reloadData];
+    }];}
 
 
 @end

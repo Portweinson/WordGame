@@ -7,6 +7,8 @@
 //
 
 #import "PWGAddWordViewController.h"
+#import "PWGWordsManager.h"
+#import "Word.h"
 
 @interface PWGAddWordViewController () <UITextFieldDelegate, UITextViewDelegate>
 
@@ -26,6 +28,7 @@
 {
     [super viewDidLoad];
     [self decorateTextView];
+    [self prepareDataRepresentation];
     [self changeDoneButtonStateIfNeeded];
     [self.textFieldWord becomeFirstResponder];
 }
@@ -64,6 +67,16 @@
     self.textViewDefinition.layer.cornerRadius = 8.0f;
 }
 
+- (void)prepareDataRepresentation
+{
+    if (self.word) {
+        self.textFieldWord.text = self.word.spelling;
+        self.textViewDefinition.text = self.word.definition;
+    } else if (self.spelling) {
+        self.textFieldWord.text = self.spelling;
+    }
+}
+
 
 #pragma mark -
 
@@ -77,7 +90,16 @@
 
 - (IBAction)doneButtonPressed:(UIButton *)sender
 {
-    
+    /////TEMP/////
+    [WORDS_MANAGER saveWord:self.word spelling:[self.textFieldWord.text lowercaseString] definition:self.textViewDefinition.text language:self.language completion:^(BOOL success, Word*savedWord) {
+        if (success) {
+            if (self.delegate && [self.delegate respondsToSelector:@selector(wordAdded:)]) {
+                [self.delegate wordAdded:savedWord];
+            }
+            [self.presentingViewController dismissViewControllerAnimated:YES completion:^{}];
+        }
+    }];
+    //////////////
 }
 
 - (IBAction)cancelButtonPressed:(UIButton *)sender
