@@ -12,6 +12,6 @@
 
 @interface PWGGamesManager : NSObject
 
-- (Game *)createGameNamed:(NSString *)name withLanguage:(NSString *)languageCode;
+- (void)createGameNamed:(NSString *)name withLanguage:(NSString *)languageCode completion:(void(^)(BOOL success, Game *newGame, NSError *error))completion;
 
 @end

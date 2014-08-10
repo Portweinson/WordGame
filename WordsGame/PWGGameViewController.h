@@ -8,6 +8,10 @@
 
 #import "PWGBaseViewController.h"
 
+@class Game;
+
 @interface PWGGameViewController : PWGBaseViewController
+
+@property (nonatomic, strong) Game *game;
 
 @end

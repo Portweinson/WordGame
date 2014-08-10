@@ -7,7 +7,9 @@
 //
 
 #import "PWGGameSetupViewController.h"
+#import "PWGGameViewController.h"
 #import "PWGWordsManager.h"
+#import "PWGGamesManager.h"
 #import "Game+Extended.h"
 #import "PWGLanguagePickerView.h"
 
@@ -62,7 +64,14 @@ static NSString *const kSegueIDGameSetupToGame = @"Game setup to Game";
 
 - (IBAction)doneButtonPressed:(UIBarButtonItem *)sender
 {
-    [self performSegueWithIdentifier:kSegueIDGameSetupToGame sender:self];
+    NSString *gameLanguage = [self.pickerGameLanguage languageCodeForSelectedPickerRow];
+    NSString *gameName = self.textFieldGameName.text;
+    
+    [GAMES_MANAGER createGameNamed:gameName withLanguage:gameLanguage completion:^(BOOL success, Game *newGame, NSError *error) {
+        if (success) {
+            [self performSegueWithIdentifier:kSegueIDGameSetupToGame sender:newGame];
+        }
+    }];
 }
 
 - (IBAction)hideKeyboardTapRecognized:(UITapGestureRecognizer *)sender
@@ -77,7 +86,12 @@ static NSString *const kSegueIDGameSetupToGame = @"Game setup to Game";
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    
+    if ([segue.identifier isEqualToString:kSegueIDGameSetupToGame]) {
+        if ([sender isKindOfClass:[Game class]]) {
+            PWGGameViewController *controller = (PWGGameViewController *)segue.destinationViewController;
+            controller.game = (Game *)sender;
+        }
+    }
 }
 
 
