@@ -80,7 +80,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lLQ-0d-7Qv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1342" y="154"/>
+            <point key="canvasLocation" x="1260" y="124"/>
         </scene>
         <!--Game Setup View Controller - Game setup-->
         <scene sceneID="bzP-9a-yYX">
@@ -164,13 +164,43 @@
                     <view key="view" contentMode="scaleToFill" id="8QG-YS-8Zw">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9EQ-5K-FRo" userLabel="View input word container">
+                                <rect key="frame" x="0.0" y="515" width="320" height="53"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="y3t-0Q-h4O">
+                                        <rect key="frame" x="20" y="12" width="280" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Game" id="PRF-lA-KO0"/>
+                    <navigationItem key="navigationItem" title="Game" id="PRF-lA-KO0">
+                        <barButtonItem key="leftBarButtonItem" title="Exit game" id="XIY-Tg-exn">
+                            <connections>
+                                <action selector="exitGameButtonPressed:" destination="KBM-aN-5Ox" id="456-cS-N89"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="End game" id="5L5-dx-mxm">
+                            <connections>
+                                <action selector="endGameButtonPressed:" destination="KBM-aN-5Ox" id="RDd-cr-8Rp"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="textFieldInputWord" destination="y3t-0Q-h4O" id="s5X-zp-CJZ"/>
+                        <outlet property="viewInput" destination="9EQ-5K-FRo" id="Hjd-YL-cBS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o43-yB-mm9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1286" y="-563"/>
+            <point key="canvasLocation" x="1260" y="-563"/>
         </scene>
         <!--First Screen View Controller-->
         <scene sceneID="ufC-wZ-h7g">
