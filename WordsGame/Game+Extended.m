@@ -8,7 +8,7 @@
 
 #import "Game+Extended.h"
 
-const NSUInteger kGameNameLengthLimit = 25;
+const NSUInteger kGameNameLengthLimit = 35;
 
 @implementation Game (Extended)
 
